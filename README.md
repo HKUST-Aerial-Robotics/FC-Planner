@@ -6,8 +6,8 @@
 
 <div align=center><img src="img/top_2024.png" height=70% width=70% ></div>
 
-**Authors**: [Chen Feng](https://chen-albert-feng.github.io/AlbertFeng.github.io/), Haojia Li, Xinyi Chen, [Shaojie Shen](https://uav.hkust.edu.hk/group/), and [Boyu Zhou](http://sysu-star.com/).
+**Authors**: [Chen Feng](https://chen-albert-feng.github.io/AlbertFeng.github.io/), Haojia Li, Jinqi Jiang, Xinyi Chen, [Shaojie Shen](https://uav.hkust.edu.hk/group/), and [Boyu Zhou](http://sysu-star.com/).
 
-**Institutions**: [HKUST Aerial Robotics Group](https://uav.hkust.edu.hk/) and [SYSU STAR Group](http://sysu-star.com/).
+**Institutions**: [HKUST Aerial Robotics Group](https://uav.hkust.edu.hk/), [SYSU STAR Group](http://sysu-star.com/), and [HIT](http://www.hit.edu.cn/).
 
 Code will come soon.
