@@ -6,7 +6,7 @@
 
 <div align=center><img src="img/top_2024.png" height=70% width=70% ></div>
 
-**Complete video**: [Bilibili](https://www.bilibili.com/video/BV1ks4y197P6/?spm_id_from=autoNext&vd_source=0af61c122e5e37c944053b57e313025a).
+**Complete video**: [Bilibili](https://www.bilibili.com/video/BV1h84y1D7u5/?spm_id_from=333.999.0.0&vd_source=0af61c122e5e37c944053b57e313025a).
 
 **Paper**: [arXiv](https://arxiv.org/abs/2309.13882).
 
