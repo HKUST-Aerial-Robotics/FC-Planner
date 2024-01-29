@@ -1,8 +1,12 @@
 # FC-Planner
 
+## News
+
+* 29/01/2023: FC-Planner is accepted to ICRA 2024.
+
 ## Introduction
 
-**[Submitted to ICRA'24]** This repository maintains the implementation of "FC-Planner: A Skeleton-guided Planning Framework for Fast Aerial Coverage of Complex 3D Scenes".
+**[ICRA'24]** This repository maintains the implementation of "FC-Planner: A Skeleton-guided Planning Framework for Fast Aerial Coverage of Complex 3D Scenes".
 
 <div align=center><img src="img/top_2024.png" height=70% width=70% ></div>
 
