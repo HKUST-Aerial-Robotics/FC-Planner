@@ -14,7 +14,7 @@
 
 **Paper**: [arXiv](https://arxiv.org/abs/2309.13882), [Project Page](https://hkust-aerial-robotics.github.io/FC-Planner/).
 
-**Authors**: [Chen Feng](https://chen-albert-feng.github.io/AlbertFeng.github.io/), Haojia Li, Xinyi Chen, [Boyu Zhou](http://sysu-star.com/), and [Shaojie Shen](https://uav.hkust.edu.hk/group/).
+**Authors**: [Chen Feng](https://chen-albert-feng.github.io/AlbertFeng.github.io/), Haojia Li, Mingjie Zhang, Xinyi Chen, [Boyu Zhou](http://sysu-star.com/), and [Shaojie Shen](https://uav.hkust.edu.hk/group/).
 
 **Institutions**: [HKUST Aerial Robotics Group](https://uav.hkust.edu.hk/) and [SYSU STAR Group](http://sysu-star.com/).
 
