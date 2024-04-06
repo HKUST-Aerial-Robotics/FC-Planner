@@ -1,0 +1,40 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/eason/Chen/PredRecon-v2/Planner/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/adaptive-FC-Planner/active_perception/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/airsim_simulator/airsim_ros_pkgs/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/adaptive-FC-Planner/hierarchical_coverage_planner/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/adaptive-FC-Planner/local_replan/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/uav_simulator/local_sensing/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/Utils/multi_map_server/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/adaptive-FC-Planner/path_searching/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/adaptive-FC-Planner/percep_manager/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/adaptive-FC-Planner/plan_env/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/adaptive-FC-Planner/plan_manager/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/Utils/pose_utils/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/adaptive-FC-Planner/predrecon_v2_fsm/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/Utils/quadrotor_msgs/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/adaptive-FC-Planner/rosa/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/uav_simulator/so3_control/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/uav_simulator/so3_disturbance_generator/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/uav_simulator/so3_quadrotor_simulator/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/adaptive-FC-Planner/traj_utils/include/**",
+        "/home/eason/Chen/PredRecon-v2/Planner/src/Utils/uav_utils/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

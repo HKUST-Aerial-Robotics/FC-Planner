@@ -1,0 +1,27 @@
+<launch>
+
+<node pkg ="rosa" name ="rosa_exec" type ="rosa_exec" output = "screen" required ="true">
+  <param name="rosa_main/estimation_num" value="2000" type="int"/>
+  
+  <!-- /* MBS */ -->
+  <param name="rosa_main/pcd" value="$(find rosa)/data/MBS.pcd" type="string"/>
+  <param name="rosa_main/radius" value="0.1" type="double"/>
+  <param name="rosa_main/th_mah" value="0.01" type="double"/>
+  <param name="rosa_main/delta" value="0.01" type="double"/>
+  <param name="rosa_main/num_drosa" value="5" type="int"/>
+  <param name="rosa_main/num_dcrosa" value="2" type="int"/>
+  <param name="rosa_main/k_KNN" value="6" type="int"/>
+  <param name="rosa_main/sample_r" value="0.05" type="double"/>
+  <param name="rosa_main/alpha" value="0.3" type="double"/>
+  <param name="rosa_main/pt_downsample_size" value="0.02" type="double"/>
+  <param name="rosa_main/estimation_number" value="10" type="int"/>
+  <param name="rosa_main/upper_bound_angle_inner_decomp" value="45.0" type="double"/>
+  <param name="rosa_main/upper_bound_length_inner_decomp" value="1.0" type="double"/>
+  <param name="rosa_main/Prune" value="false" type="bool"/>
+  <param name="rosa_main/lower_bound_length" value="0.1" type="double"/>
+  <param name="rosa_main/lower_bound_prune_angle" value="75.0" type="double"/>
+  <param name="rosa_main/upper_bound_original_points_num" value="10000" type="int"/>
+  <param name="rosa_main/Ground" value="true" type="bool"/>
+</node>
+
+</launch>
