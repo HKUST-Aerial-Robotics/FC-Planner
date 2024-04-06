@@ -77,6 +77,7 @@ The individual package of SSD is given for your purposeful usage, where some exa
 
 Run ```Rviz``` for SSD visualization and open another terminal for SSD execution:
 ```shell
+sudo cpufreq-set -g performance
 source devel/setup.zsh && roslaunch rosa rviz.launch
 source devel/setup.zsh && roslaunch rosa ${SCENE}.launch (e.g., redbird.launch)
 ```
