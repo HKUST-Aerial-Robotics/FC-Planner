@@ -59,8 +59,14 @@ namespace predrecon
   void ROSA_main::main()
   {
     pcloud_read_off();
-    auto rosa_t1 = std::chrono::high_resolution_clock::now();
+    // ? Normal estimation.
+    auto nrl_t1 = std::chrono::high_resolution_clock::now();
     normalize();
+    auto nrl_t2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> nrl_ms = nrl_t2 - nrl_t1;
+    double nrlt = (double)nrl_ms.count();
+    // ? Algorithm starts here.
+    auto rosa_t1 = std::chrono::high_resolution_clock::now();
 
     MAHADJ.resize(pcd_size_, pcd_size_);
     MAHADJ.setZero();
@@ -102,7 +108,7 @@ namespace predrecon
     auto rosa_t2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> rosa_ms = rosa_t2 - rosa_t1;
     double rt = (double)rosa_ms.count();
-    ROS_INFO("\033[34m[SSD] SSD latency = %lf ms.\033[34m", rt);
+    ROS_INFO("\033[34m[SSD] SSD latency = %lf ms. Normal estimation costs %lf ms.\033[34m", rt, nrlt);
     ROS_INFO("\033[35m[SSD] --- <SSD finished> --- \033[35m");
   }
 
