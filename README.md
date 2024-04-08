@@ -39,7 +39,7 @@
 **FC-Planner** is a skeleton-guided planning framework tailored for fast coverage of large and complex 3D scenes. Both the simulation and real-world experiments demonstrate the superior system simplicity and performance of our method compared to state-of-the-art ones.
 
 Please cite our paper if you use this project in your research:
-* [PredRecon: A Prediction-boosted Planning Framework for Fast and High-quality Autonomous Aerial Reconstruction](https://arxiv.org/pdf/2309.13882.pdf), Chen Feng, Haojia Li, Mingjie Zhang, Xinyi Chen, Boyu Zhou, and Shaojie Shen, 2024 IEEE International Conference on Robotics and Automation (ICRA).
+* [FC-Planner: A Skeleton-guided Planning Framework for Fast Aerial Coverage of Complex 3D Scenes](https://arxiv.org/pdf/2309.13882.pdf), Chen Feng, Haojia Li, Mingjie Zhang, Xinyi Chen, Boyu Zhou, and Shaojie Shen, 2024 IEEE International Conference on Robotics and Automation (ICRA).
 
 ```shell
 @article{feng2023fc,
@@ -101,7 +101,7 @@ rosa_main/alpha                           : [double] --> the scale factor of Euc
 rosa_main/upper_bound_angle_inner_decomp  : [double] --> upper direction consistency of each branch.
 rosa_main/upper_bound_length_inner_decomp : [double] --> upper length of each branch.
 rosa_main/Prune                           : [bool] --> identifier for branch pruning.
-rosa_main/lower_bound_length              : [double] --> upper length of each branch.
+rosa_main/lower_bound_length              : [double] --> lower length of each branch.
 ```
 
 #### ⏳ Remaining code will come soon...
