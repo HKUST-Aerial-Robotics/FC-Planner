@@ -41,7 +41,7 @@
 Please cite our paper if you use this project in your research:
 * [FC-Planner: A Skeleton-guided Planning Framework for Fast Aerial Coverage of Complex 3D Scenes](https://arxiv.org/pdf/2309.13882.pdf), Chen Feng, Haojia Li, Mingjie Zhang, Xinyi Chen, Boyu Zhou, and Shaojie Shen, 2024 IEEE International Conference on Robotics and Automation (ICRA).
 
-```shell
+```
 @article{feng2023fc,
   title={FC-Planner: A Skeleton-guided Planning Framework for Fast Aerial Coverage of Complex 3D Scenes},
   author={Feng, Chen and Li, Haojia and Jiang, Jinqi and Chen, Xinyi and Shen, Shaojie and Zhou, Boyu},
@@ -57,6 +57,7 @@ Please kindly star ⭐️ this project if it helps you. We take great efforts to
 * ROS Noetic (Ubuntu 20.04)
 * PCL 1.7
 * Eigen3
+* [NLopt](https://github.com/stevengj/nlopt)
 
 The project has been tested on Ubuntu 20.04 LTS (ROS Noetic). Directly clone our package (using ssh here):
 
@@ -89,7 +90,7 @@ Afterwards, you will see the SSD results of HKUST RedBird in your ```Rviz``` as 
 
 As for your customerized scene, you can create the corresponding ```.launch``` file using the template in the given example scenes in ```src/rosa/launch```. For your convenience, we offer the meaning of each hyperparameter for your adjustment.
 
-```shell
+```
 rosa_main/estimation_num                  : [int] -->  the number of points for skeleton extraction, using uniform downsampling.
 rosa_main/pcd                             : [string] -->  the path of input scene, using ".pcd" form.
 rosa_main/estimation_number               : [int] --> the neighboring number in normal estimation.

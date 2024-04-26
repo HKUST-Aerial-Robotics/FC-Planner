@@ -153,7 +153,6 @@ namespace predrecon
       drosa.push_back(pt_);
     }
 
-    // ! Debug
     pcl::PointCloud<pcl::PointXYZ> vertex_debug;
     pcl::PointXYZ vertex_debug_pt;
     for (int i=0; i<(int)skeleton_ver_cloud->size(); ++i)
@@ -165,9 +164,8 @@ namespace predrecon
     }
     Eigen::Vector3d debug_cutpt;
     debug_cutpt << vertex_debug.points[0].x, vertex_debug.points[0].y, vertex_debug.points[0].z;
+    
     vis_utils_->publishCheckNeigh(debug_cutpt, vertex_debug, adj_before_collapse);
-    // ! Debug
-
     vis_utils_->publishSurface(pcloud);
     vis_utils_->publishSurfaceNormal(calcloud, normals);
     vis_utils_->publishROSAOrientation(calcloud, orientations);
@@ -1326,7 +1324,7 @@ namespace predrecon
     th_mah = 0.1*Radius; //* Determination relationship of constructing gragh 
     delta = pt_downsample_voxel_size; //* keep plane thickness and downsample size equal
 
-    ROS_ERROR("Final downsample voxel size: %f, Cloud size: %d", pt_downsample_voxel_size, (int)P.cloud_with_normals->points.size());
+    ROS_ERROR("Final downsample voxel size: %f, Cloud size: %d.", pt_downsample_voxel_size, (int)P.cloud_with_normals->points.size());
 
     pcd_size_ = P.cloud_with_normals->points.size();
     P.pts_.reset(new pcl::PointCloud<pcl::PointXYZ>);
@@ -1351,7 +1349,7 @@ namespace predrecon
     auto norm_t2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> norm_ms = norm_t2 - norm_t1;
     double norm_time = (double)norm_ms.count();
-    ROS_INFO("\033[32m[SSD] normalize time = %lf ms\033[32m", norm_time);
+    ROS_INFO("\033[32m[SSD] normalize time = %lf ms.\033[32m", norm_time);
   } 
   /* orthonormal basis generation */
   Eigen::Matrix3d ROSA_main::create_orthonormal_frame(Eigen::Vector3d& v)

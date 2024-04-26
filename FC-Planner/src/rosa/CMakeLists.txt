@@ -14,7 +14,6 @@ find_package(catkin REQUIRED COMPONENTS
 )
 find_package(PCL REQUIRED)
 find_package(Eigen3 REQUIRED)
-find_package(Ceres REQUIRED)
 
 catkin_package(
   INCLUDE_DIRS include
@@ -29,7 +28,6 @@ include_directories(
     ${catkin_INCLUDE_DIRS}
     ${Eigen3_INCLUDE_DIRS} 
     ${PCL_INCLUDE_DIRS}
-    ${CERES_INCLUDE_DIRS}
 )
 
 link_directories(
@@ -43,7 +41,6 @@ add_library( rosa
 target_link_libraries( rosa
     ${catkin_LIBRARIES} 
     ${PCL_LIBRARIES}
-    ${CERES_LIBRARIES}
     )  
 
 add_executable(rosa_exec
@@ -55,5 +52,4 @@ add_executable(rosa_exec
 target_link_libraries( rosa_exec
     ${catkin_LIBRARIES} 
     ${PCL_LIBRARIES}
-    ${CERES_LIBRARIES}
     )
