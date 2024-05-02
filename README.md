@@ -82,8 +82,8 @@ source devel/setup.zsh && roslaunch hierarchical_coverage_planner mbs.launch
 ```
 Trigger the quadrotor to start planning by the ``2D Nav Goal``, then ``2D Pose Estimate`` to start coverage flight as shown in the left gif. More scenes are provided in ```src/hierarchical_coverage_planner/launch```
 <p align="center">
-  <img src="misc/mbs.gif" width = 450 height = 280/>
-  <img src="misc/mbs_recon.gif" width = 450 height = 280/>
+  <img src="misc/mbs.gif" width = 400 height = 240/>
+  <img src="misc/mbs_recon.gif" width = 400 height = 240/>
 </p>
 
 Afterwards, you will obtain the discrete trajectory in ```src/hierarchical_coverage_planner/solution/Traj/TrajInfoMBS.txt```. You can use this coverage trajectory to capture the images of the target, then reconstruct it. The detailed step can be found in [vis tool doc](./vis_tool/README.md). The reconstruction result is depicted in the right gif.
