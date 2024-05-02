@@ -1,0 +1,66 @@
+<launch>
+<!-- SCENE : Marina Bay Sands -->
+<arg name="fov_h" value="55.0"/>
+<arg name="fov_w" value="75.0"/>
+<arg name="max_dist" value="11.0"/>
+<arg name="resolution_" value="0.4"/>
+
+<node pkg ="viewpoint_manager" name ="skeleton_viewpoint_node" type ="skeleton_viewpoint_node" output = "screen" required ="true">
+  <!-- ! Skeleton-based Space Decomposition ! -->
+  <param name="rosa_main/estimation_num" value="2000" type="int"/>
+  <param name="rosa_main/pcd" value="$(find hierarchical_coverage_planner)/data/MBS.pcd" type="string"/>
+  <param name="rosa_main/radius" value="0.1" type="double"/>
+  <param name="rosa_main/th_mah" value="0.01" type="double"/>
+  <param name="rosa_main/delta" value="0.01" type="double"/>
+  <param name="rosa_main/num_drosa" value="5" type="int"/>
+  <param name="rosa_main/num_dcrosa" value="2" type="int"/>
+  <param name="rosa_main/k_KNN" value="6" type="int"/>
+  <param name="rosa_main/sample_r" value="0.05" type="double"/>
+  <param name="rosa_main/alpha" value="0.3" type="double"/>
+  <param name="rosa_main/pt_downsample_size" value="0.02" type="double"/>
+  <param name="rosa_main/estimation_number" value="10" type="int"/>
+  <param name="rosa_main/upper_bound_angle_inner_decomp" value="45.0" type="double"/>
+  <param name="rosa_main/upper_bound_length_inner_decomp" value="1.0" type="double"/>
+  <param name="rosa_main/Prune" value="false" type="bool"/>
+  <param name="rosa_main/lower_bound_length" value="0.1" type="double"/>
+  <param name="rosa_main/lower_bound_prune_angle" value="75.0" type="double"/>
+  <param name="rosa_main/upper_bound_original_points_num" value="10000" type="int"/>
+  <param name="rosa_main/Ground" value="true" type="bool"/>
+
+  <!-- ! Mapping ! -->
+  <param name="hcmap/resolution" value="$(arg resolution_)" type="double"/>
+  <param name="hcmap/interval" value="1.0" type="double"/>
+  <param name="hcmap/plane_thickness" value="3.0" type="double"/>
+  <param name="hcmap/dilateRadius" value="0.5" type="double"/>
+  <param name="hcmap/checkScale" value="5.0" type="double"/>
+  <param name="hcmap/checkSize" value="7" type="int"/>
+  <param name="hcmap/inflateVoxel" value="4" type="int"/>
+
+  <!-- ! Perception ! -->
+  <param name="perception_utils/top_angle" value="$(eval arg('fov_h')*3.1415926/360.0)" type="double"/>
+  <param name="perception_utils/left_angle" value="$(eval arg('fov_w')*3.1415926/360.0)" type="double"/>
+  <param name="perception_utils/right_angle" value="$(eval arg('fov_w')*3.1415926/360.0)" type="double"/>
+  <param name="perception_utils/max_dist" value="$(arg max_dist)" type="double"/>
+  <param name="perception_utils/vis_dist" value="3.0" type="double"/>
+  
+  <!-- ! Viewpoint Manager ! -->
+  <param name="hcplanner/mesh" value="$(find hierarchical_coverage_planner)/data/mesh/MBS.obj" type="string"/>
+  <param name="hcplanner/fullcloud" value="$(find hierarchical_coverage_planner)/data/MBSmore.pcd" type="string"/>
+  <param name="hcplanner/model_downsample_size" value="2.0" type="double"/>
+  <param name="hcplanner/sample_step4normal" value="1.0" type="double"/>
+  <param name="viewpoint_manager/visible_range" value="$(arg max_dist)" type="double"/>
+  <param name="viewpoint_manager/viewpoints_distance" value="8.0" type="double"/>
+  <param name="viewpoint_manager/fov_h" value="$(arg fov_h)" type="double"/>
+  <param name="viewpoint_manager/fov_w" value="$(arg fov_w)" type="double"/>
+  <param name="viewpoint_manager/pitch_upper" value="70.0" type="double"/>
+  <param name="viewpoint_manager/pitch_lower" value="-85.0" type="double"/>
+  <param name="viewpoint_manager/zGround" value="true" type="bool"/>
+  <param name="viewpoint_manager/GroundPos" value="-10.5" type="double"/>
+  <param name="viewpoint_manager/safeHeight" value="1.5" type="double"/>
+  <param name="viewpoint_manager/safe_radius" value="3.0" type="double"/>
+  <param name="viewpoint_manager/attitude_type" value="all" type="string"/> <!-- attitude_type : 1) yaw 2) all -> (pitch, yaw) -->
+  <param name="viewpoint_manager/max_iter_num" value="2" type="int"/> 
+  <param name="viewpoint_manager/pose_update" value="true" type="bool"/> 
+</node>
+
+</launch>

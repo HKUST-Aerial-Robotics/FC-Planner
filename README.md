@@ -24,7 +24,9 @@
 
 ## 📢 News
 
+* **[02/05/2024]**: All remaining code has been released (Viewpoint generation & Planning).
 * **[06/04/2024]**: Code of Skeleton-based Space Decomposition (SSD) is released.
+* **[15/03/2024]**: FC-Planner is extended to multi-UAV autonomous reconstruction as FC-Hetero, check this [repo](https://github.com/SYSU-STAR/FC-Hetero) for details.
 * **[29/01/2024]**: FC-Planner is accepted to ICRA 2024.
 
 ## 📜 Introduction
@@ -36,7 +38,7 @@
   <img src="misc/fc-title.gif" width = 60% height = 60%/>
 </p>
 
-**FC-Planner** is a skeleton-guided planning framework tailored for fast coverage of large and complex 3D scenes. Both the simulation and real-world experiments demonstrate the superior system simplicity and performance of our method compared to state-of-the-art ones.
+**FC-Planner** is a highly efficient planning framework tailored for fast coverage of large and complex 3D scenes. Both the simulation and real-world experiments demonstrate the superior system simplicity and performance of our method compared to state-of-the-art ones.
 
 Please cite our paper if you use this project in your research:
 * [FC-Planner: A Skeleton-guided Planning Framework for Fast Aerial Coverage of Complex 3D Scenes](https://arxiv.org/pdf/2309.13882.pdf), Chen Feng, Haojia Li, Mingjie Zhang, Xinyi Chen, Boyu Zhou, and Shaojie Shen, 2024 IEEE International Conference on Robotics and Automation (ICRA).
@@ -54,12 +56,12 @@ Please kindly star ⭐️ this project if it helps you. We take great efforts to
 
 ## 🛠️ Installation
 
-* ROS Noetic (Ubuntu 20.04)
+* ROS Noetic (Ubuntu 20.04) or ROS Melodic (Ubuntu 18.04)
 * PCL 1.7
 * Eigen3
 * [NLopt](https://github.com/stevengj/nlopt)
 
-The project has been tested on Ubuntu 20.04 LTS (ROS Noetic). Directly clone our package (using ssh here):
+The project has been tested on Ubuntu 20.04 LTS (ROS Noetic) and Ubuntu 18.04 LTS (ROS Melodic). Directly clone our package (using ssh here):
 
 ```shell
   sudo apt update
@@ -70,9 +72,27 @@ The project has been tested on Ubuntu 20.04 LTS (ROS Noetic). Directly clone our
   catkin_make
 ```
 
-## 🚀  Quick Start
+## 🚀 Quick Start
 
-#### Skeleton-based Space Decomposition (SSD)
+Run ```Rviz``` for coverage flight visualization and open another terminal for running the simulation:
+```shell
+sudo cpufreq-set -g performance
+source devel/setup.zsh && roslaunch hierarchical_coverage_planner rviz.launch
+source devel/setup.zsh && roslaunch hierarchical_coverage_planner mbs.launch
+```
+Trigger the quadrotor to start planning by the ``2D Nav Goal``, then ``2D Pose Estimate`` to start coverage flight as shown in the left gif. More scenes are provided in ```src/hierarchical_coverage_planner/launch```
+<p align="center">
+  <img src="misc/mbs.gif" width = 480 height = 300/>
+  <img src="misc/mbs_recon.gif" width = 480 height = 300/>
+</p>
+
+Afterwards, you will obtain the discrete trajectory in ```src/hierarchical_coverage_planner/solution/Traj/TrajInfoMBS.txt```. You can use this coverage trajectory to capture the images of the target, then reconstruct it. The detailed step can be found in [vis tool doc](./vis_tool/README.md). The reconstruction result is depicted in the right gif.
+
+## 🔌 Plug-in Packages
+
+For the benefit of the community, we modularize the whole project and extract two important functions (space decomposition and viewpoint generation) as plug-in packages for your use.
+
+#### • Skeleton-based Space Decomposition (SSD)
 
 The individual package of SSD is given for your purposeful usage, where some example scenes are provided in ```src/rosa/launch```.
 
@@ -88,21 +108,39 @@ Afterwards, you will see the SSD results of HKUST RedBird in your ```Rviz``` as 
   <img src="misc/redbird.png" width = 60% height = 60%/>
 </p>
 
-As for your customerized scene, you can create the corresponding ```.launch``` file using the template in the given example scenes in ```src/rosa/launch```. For your convenience, we offer the meaning of each hyperparameter for your adjustment.
+As for your ***customerized scene*** and ***more details***, you can find in [rosa package doc](FC-Planner/src/rosa/README.md). 
 
-```
-rosa_main/estimation_num                  : [int] -->  the number of points for skeleton extraction, using uniform downsampling.
-rosa_main/pcd                             : [string] -->  the path of input scene, using ".pcd" form.
-rosa_main/estimation_number               : [int] --> the neighboring number in normal estimation.
-rosa_main/radius                          : [double] --> the radius of relative neighborhood for each point.
-rosa_main/num_drosa                       : [int] --> the iteration number of calculating position and orientation of ROSA points.
-rosa_main/num_dcrosa                      : [int] --> the iteration number of smoothening and shrinking ROSA points.
-rosa_main/sample_r                        : [double] --> the sampling radius for pivotal ROSA points selection.
-rosa_main/alpha                           : [double] --> the scale factor of Euclidean manner and projection manner in recentering.
-rosa_main/upper_bound_angle_inner_decomp  : [double] --> upper direction consistency of each branch.
-rosa_main/upper_bound_length_inner_decomp : [double] --> upper length of each branch.
-rosa_main/Prune                           : [bool] --> identifier for branch pruning.
-rosa_main/lower_bound_length              : [double] --> lower length of each branch.
+#### • Iterative Updates of Viewpoint Pose
+
+Here we provide an independent package of finding the minimal viewpoint set for a given area needed to cover, *i.e.*, our proposed ***Iterative Updates of Viewpoint Pose***.
+
+Specifically, we give a 3D case guided by skeleton. Run ```Rviz``` for visualization and open another terminal for viewpoint generation execution:
+```shell
+sudo cpufreq-set -g performance
+source devel/setup.zsh && roslaunch viewpoint_manager rviz.launch
+source devel/setup.zsh && roslaunch viewpoint_manager mbs.launch
 ```
 
-#### ⏳ Remaining code will come soon...
+Afterwards, you will see the viewpoint generation results of Marina Bay Sands in your ```Rviz``` as follows:
+<p align="center">
+  <img src="misc/iterative_updates.png" width = 80% height = 60%/>
+</p>
+
+You can also use other guidance to generate viewpoints, *e.g.*, normals. For more usage details, you can find in [viewpoint manager doc](./FC-Planner/src/viewpoint_manager/README.md).  
+
+## 🎮 Demo
+
+<p align="center">
+  <img src="misc/pipe.gif" width = 45% height = 45%/>
+  <img src="misc/mbs.gif" width = 45% height = 45%/>
+  <img src="misc/pacifico.gif" width = 35% height = 35%/>
+  <img src="misc/christ.gif" width = 45% height = 45%/>
+</p>
+<p align="center">
+  <img src="misc/realworld.gif"/>
+</p>
+
+## 🤗 FC-family Works
+
+* [FC-Planner](https://github.com/HKUST-Aerial-Robotics/FC-Planner) (ICRA2024): Highly Efficient Global Planner for Aerial Coverage.
+* [FC-Hetero](https://github.com/SYSU-STAR/FC-Hetero) (Submitted to IROS2024): Heterogenous Multi-UAV Planner for Aerial Reconstruction.

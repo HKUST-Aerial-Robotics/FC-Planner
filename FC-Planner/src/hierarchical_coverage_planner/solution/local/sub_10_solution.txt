@@ -1,0 +1,21 @@
+NAME : local_10.6441.tour
+COMMENT : Length = 6441
+COMMENT : Found by LKH [Keld Helsgaun] Fri May  3 00:08:53 2024
+TYPE : TOUR
+DIMENSION : 13
+TOUR_SECTION
+1
+11
+6
+7
+3
+9
+4
+5
+2
+10
+12
+8
+13
+-1
+EOF

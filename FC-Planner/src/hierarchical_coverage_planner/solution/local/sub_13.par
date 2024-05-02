@@ -1,0 +1,4 @@
+PROBLEM_FILE = /home/zhuang/workspace/FC-Planner-Test/src/hierarchical_coverage_planner/solution/local/sub_13.tsp
+GAIN23 = NO
+OUTPUT_TOUR_FILE =/home/zhuang/workspace/FC-Planner-Test/src/hierarchical_coverage_planner/solution/local/sub_13_solution.txt
+RUNS = 1

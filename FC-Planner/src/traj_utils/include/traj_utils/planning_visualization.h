@@ -94,6 +94,7 @@ private:
   // ROSA Opt
   ros::Publisher optArea_pub_;
   // HCOPP
+  ros::Publisher init_vps_pub_;
   ros::Publisher sub_vps_hull_pub_;
   ros::Publisher before_opt_vp_pub_;
   ros::Publisher after_opt_vp_pub_;
@@ -180,6 +181,7 @@ public:
   void publishTravelTraj(vector<Eigen::Vector3d> path, double resolution, Eigen::Vector4d color, int id);
   void publishVisiblePoints(pcl::PointCloud<pcl::PointXYZ>::Ptr& currentCloud, int id);
   void publishVpsCHull(std::map<int, std::vector<std::pair<Eigen::Vector3d, Eigen::Vector3d>>>& vpHull, vector<Eigen::Vector3d>& hamiPath);
+  void publishInitVps(pcl::PointCloud<pcl::PointNormal>::Ptr& init_vps);
   /* ROSA Debug Vis */
   void publishCheckNeigh(Eigen::Vector3d& checkPoint, const pcl::PointCloud<pcl::PointXYZ>& checkNeigh, Eigen::MatrixXi& edgeMat);
   void publishCheckCP(Eigen::Vector3d& CPPoint, Eigen::Vector3d& CPDir, Eigen::Vector3d& checkRP, const pcl::PointCloud<pcl::PointXYZ>& CPPts, const pcl::PointCloud<pcl::PointXYZ>& CPPtsCluster);

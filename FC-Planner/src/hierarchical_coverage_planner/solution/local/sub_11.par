@@ -1,0 +1,4 @@
+PROBLEM_FILE = /home/eason/FC-Planner-updated/FC-Planner/src/hierarchical_coverage_planner/solution/local/sub_11.tsp
+GAIN23 = NO
+OUTPUT_TOUR_FILE =/home/eason/FC-Planner-updated/FC-Planner/src/hierarchical_coverage_planner/solution/local/sub_11_solution.txt
+RUNS = 1

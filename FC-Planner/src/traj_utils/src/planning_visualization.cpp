@@ -98,6 +98,7 @@ PlanningVisualization::PlanningVisualization(ros::NodeHandle& nh) {
   optArea_pub_ = node.advertise<sensor_msgs::PointCloud2>("/rosa_opt/opt_area", 1);
 
   /* HCOPP */
+  init_vps_pub_ = node.advertise<visualization_msgs::MarkerArray>("/hcopp/init_vps", 1);
   sub_vps_hull_pub_ = node.advertise<visualization_msgs::MarkerArray>("/hcopp/vps_hull", 1);
   before_opt_vp_pub_ = node.advertise<sensor_msgs::PointCloud2>("/hcopp/before_vps", 1);
   after_opt_vp_pub_ = node.advertise<sensor_msgs::PointCloud2>("/hcopp/after_vps", 1); 
@@ -732,13 +733,13 @@ void PlanningVisualization::publishFOV(const vector<vector<Eigen::Vector3d>>& li
     mk.id = counter;
     mk.ns = "current_pose";
     mk.type = visualization_msgs::Marker::LINE_LIST;
-    mk.color.r = 0.0;
-    mk.color.g = 0.0;
-    mk.color.b = 0.0;
-    mk.color.a = 1.0;
-    mk.scale.x = 0.15;
-    mk.scale.y = 0.15;
-    mk.scale.z = 0.15;
+    mk.color.r = 1.0;
+    mk.color.g = 0.1;
+    mk.color.b = 0.1;
+    mk.color.a = 0.85;
+    mk.scale.x = 0.18;
+    mk.scale.y = 0.18;
+    mk.scale.z = 0.18;
     mk.pose.orientation.w = 1.0;
 
     geometry_msgs::Point pt;
@@ -1556,7 +1557,8 @@ void PlanningVisualization::publishCurrentFoV(const vector<Eigen::Vector3d>& lis
   mk.action = visualization_msgs::Marker::ADD;
   drawFoV_pub_.publish(mk);
 
-  double yaw_mesh = yaw + 45.0 * M_PI / 180.0;
+  // double yaw_mesh = yaw + 45.0 * M_PI / 180.0;
+  double yaw_mesh = yaw;
   meshROS.pose.orientation.x = 0.0;
   meshROS.pose.orientation.y = 0.0;
   meshROS.pose.orientation.z = sin(0.5*yaw_mesh);
@@ -1879,6 +1881,72 @@ void PlanningVisualization::publishVpsCHull(std::map<int, std::vector<std::pair<
   vpHulls.markers.push_back(path);
 
   sub_vps_hull_pub_.publish(vpHulls);
+}
+
+void PlanningVisualization::publishInitVps(pcl::PointCloud<pcl::PointNormal>::Ptr& init_vps)
+{
+  visualization_msgs::MarkerArray init_vps_markers;
+  int counter = 0;
+  double scale = 3.0;
+
+  for (int i=0; i<(int)init_vps->points.size(); ++i)
+  {
+    visualization_msgs::Marker nm;
+    nm.header.frame_id = "world";
+    nm.header.stamp = ros::Time::now();
+    nm.id = counter;
+    nm.ns = "init_vps_dir";
+    nm.type = visualization_msgs::Marker::ARROW;
+    nm.action = visualization_msgs::Marker::ADD;
+
+    nm.pose.orientation.w = 1.0;
+    nm.scale.x = 0.2;
+    nm.scale.y = 0.3;
+    nm.scale.z = 0.2;
+
+    geometry_msgs::Point pt_;
+    pt_.x = init_vps->points[i].x;
+    pt_.y = init_vps->points[i].y;
+    pt_.z = init_vps->points[i].z;
+    nm.points.push_back(pt_);
+
+    pt_.x = init_vps->points[i].x + scale*init_vps->points[i].normal_x;
+    pt_.y = init_vps->points[i].y + scale*init_vps->points[i].normal_y;
+    pt_.z = init_vps->points[i].z + scale*init_vps->points[i].normal_z;
+
+    nm.points.push_back(pt_);
+
+    nm.color.r = 0.0;
+    nm.color.g = 0.4;
+    nm.color.b = 0.9;
+    nm.color.a = 0.8;
+
+    init_vps_markers.markers.push_back(nm);
+    counter++;
+
+    visualization_msgs::Marker pos;
+    pos.header.frame_id = "world";
+    pos.header.stamp = ros::Time::now();
+    pos.id = counter;
+    pos.ns = "init_vps_pos";
+    pos.type = visualization_msgs::Marker::SPHERE;
+    pos.color.r = 0.0;
+    pos.color.g = 0.0;
+    pos.color.b = 0.0;
+    pos.color.a = 1.0;
+    pos.scale.x = 0.5;
+    pos.scale.y = 0.5;
+    pos.scale.z = 0.5;
+    pos.pose.orientation.w = 1.0;
+    pos.pose.position.x = init_vps->points[i].x;
+    pos.pose.position.y = init_vps->points[i].y;
+    pos.pose.position.z = init_vps->points[i].z;
+
+    init_vps_markers.markers.push_back(pos);
+    counter++;
+  }
+
+  init_vps_pub_.publish(init_vps_markers);
 }
 
 void PlanningVisualization::publishOptArea(vector<pcl::PointCloud<pcl::PointXYZ>>& optArea)
