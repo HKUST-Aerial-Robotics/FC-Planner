@@ -24,7 +24,7 @@
 
 ## 📢 News
 
-* **[02/05/2024]**: All remaining code has been released (Viewpoint generation & Planning).
+* **[02/05/2024]**: All remaining code is released (Viewpoint generation & Planning).
 * **[06/04/2024]**: Code of Skeleton-based Space Decomposition (SSD) is released.
 * **[15/03/2024]**: FC-Planner is extended to multi-UAV autonomous reconstruction as FC-Hetero, check this [repo](https://github.com/SYSU-STAR/FC-Hetero) for details.
 * **[29/01/2024]**: FC-Planner is accepted to ICRA 2024.
@@ -86,7 +86,7 @@ Trigger the quadrotor to start planning by the ``2D Nav Goal``, then ``2D Pose E
   <img src="misc/mbs_recon.gif" width = 400 height = 240/>
 </p>
 
-Afterwards, you will obtain the discrete trajectory in ```src/hierarchical_coverage_planner/solution/Traj/TrajInfoMBS.txt```. You can use this coverage trajectory to capture the images of the target, then reconstruct it. The detailed step can be found in [vis tool doc](./vis_tool/README.md). The reconstruction result is depicted in the right gif.
+Afterwards, you will obtain the discrete trajectory in ```src/hierarchical_coverage_planner/solution/Traj/TrajInfoMBS.txt```. You can use this coverage trajectory to capture the images of the target, and then reconstruct it. The detailed step can be found in [vis tool doc](./FC-Planner/vis_tool/README.md). The reconstruction result is depicted in the right gif.
 
 ## 🔌 Plug-in Packages
 
