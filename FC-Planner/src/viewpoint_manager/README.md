@@ -58,4 +58,4 @@ viewpoint_manager/attitude_type         : [string] --> The type of attitude for 
 viewpoint_manager/max_iter_num          : [int] --> The maximum number of iterations for viewpoint optimization.
 viewpoint_manager/pose_update           : [bool] --> A flag indicating whether the viewpoint pose is updated according to the visible voxels.
 ```
-**Important notice**: this package only support surface point cloud, which means interior should be clear.
+**Important notice**: this package only supports ***surface point cloud***, which means interior should be clear.
