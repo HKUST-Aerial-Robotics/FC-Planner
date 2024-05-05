@@ -86,6 +86,7 @@ Trigger the quadrotor to start planning by the ``2D Nav Goal``, then ``2D Pose E
 </p>
 
 Afterwards, you will obtain the discrete trajectory in ```src/hierarchical_coverage_planner/solution/Traj/TrajInfoMBS.txt```. You can use this coverage trajectory to capture the images of the target, and then reconstruct it. The detailed step can be found in [vis tool doc](./FC-Planner/vis_tool/README.md). The reconstruction result is depicted in the right gif.
+<<<<<<< HEAD
 
 #### • Use in Your Application
 
