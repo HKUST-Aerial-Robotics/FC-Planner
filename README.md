@@ -59,7 +59,6 @@ Please kindly star ⭐️ this project if it helps you. We take great efforts to
 * ROS Noetic (Ubuntu 20.04) or ROS Melodic (Ubuntu 18.04)
 * PCL 1.7
 * Eigen3
-* [NLopt](https://github.com/stevengj/nlopt)
 
 The project has been tested on Ubuntu 20.04 LTS (ROS Noetic) and Ubuntu 18.04 LTS (ROS Melodic). Directly clone our package (using ssh here):
 
@@ -87,6 +86,10 @@ Trigger the quadrotor to start planning by the ``2D Nav Goal``, then ``2D Pose E
 </p>
 
 Afterwards, you will obtain the discrete trajectory in ```src/hierarchical_coverage_planner/solution/Traj/TrajInfoMBS.txt```. You can use this coverage trajectory to capture the images of the target, and then reconstruct it. The detailed step can be found in [vis tool doc](./FC-Planner/vis_tool/README.md). The reconstruction result is depicted in the right gif.
+
+#### • Use in Your Application
+
+If you have successfully run the simulation and want to use FC-Planner in your project, please explore the launch files in ```src/hierarchical_coverage_planner/launch```. Important parameters that may be changed in your usage. Notably, FC-Planner accepts ***surface point cloud*** as input, so you may be careful about the type of your data.
 
 ## 🔌 Plug-in Packages
 

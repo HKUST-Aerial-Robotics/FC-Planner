@@ -1,40 +1,12 @@
-NAME : local_0.12667.tour
-COMMENT : Length = 12667
-COMMENT : Found by LKH [Keld Helsgaun] Fri May  3 00:08:53 2024
+NAME : local_0.10000940.tour
+COMMENT : Length = 10000940
+COMMENT : Found by LKH [Keld Helsgaun] Sun May  5 14:02:13 2024
 TYPE : TOUR
-DIMENSION : 32
+DIMENSION : 4
 TOUR_SECTION
 1
-16
-28
-10
-19
-5
-27
-31
-30
-14
-3
-21
-4
-17
-25
-23
-26
-29
-7
-8
 2
-12
-9
-18
-20
-6
-13
-11
-15
-24
-22
-32
+3
+4
 -1
 EOF

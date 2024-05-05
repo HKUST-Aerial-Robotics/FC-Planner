@@ -57,7 +57,6 @@
 #include <chrono>
 #include <cstdlib>
 #include <ctime>
-#include <nlopt.hpp>
 #include <gcopter/firi.hpp>
 #include <gcopter/voxel_map.hpp>
 #include <gcopter/sfc_gen.hpp>
