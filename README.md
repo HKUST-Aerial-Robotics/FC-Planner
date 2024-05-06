@@ -145,5 +145,6 @@ You can also use other guidance to generate viewpoints, *e.g.*, normals. For mor
 
 ## 🤗 FC-family Works
 
+* [PredRecon](https://github.com/HKUST-Aerial-Robotics/PredRecon) (ICRA2023): Prediction-boosted Planner for Aerial Reconstruction.
 * [FC-Planner](https://github.com/HKUST-Aerial-Robotics/FC-Planner) (ICRA2024): Highly Efficient Global Planner for Aerial Coverage.
 * [FC-Hetero](https://github.com/SYSU-STAR/FC-Hetero) (Submitted to IROS2024): Heterogenous Multi-UAV Planner for Aerial Reconstruction.
