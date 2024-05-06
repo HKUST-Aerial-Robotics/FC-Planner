@@ -84,7 +84,7 @@
   <param name="viewpoint_manager/fov_w" value="$(arg fov_w)" type="double"/>
   <param name="viewpoint_manager/pitch_upper" value="70.0" type="double"/>
   <param name="viewpoint_manager/pitch_lower" value="-85.0" type="double"/>
-  <param name="viewpoint_manager/zGround" value="true" type="bool"/>
+  <param name="viewpoint_manager/zGround" value="false" type="bool"/>
   <param name="viewpoint_manager/GroundPos" value="-7.4" type="double"/>
   <param name="viewpoint_manager/safeHeight" value="1.5" type="double"/>
   <param name="viewpoint_manager/safe_radius" value="3.0" type="double"/>

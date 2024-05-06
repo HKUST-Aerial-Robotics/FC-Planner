@@ -53,6 +53,7 @@ namespace predrecon
     vis_timer_ = nh.createTimer(ros::Duration(0.1), &ROSA_main::VisCallback, this);
     /* Initialization */
     pcd_size_ = 0;
+    groundHeight = 0.0;
     ROS_INFO("\033[34m[SSD] Initialized!\033[34m");
   }
   /* ROSA main function */
