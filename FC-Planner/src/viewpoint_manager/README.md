@@ -8,6 +8,13 @@
 
 Here we provide an independent package of finding the minimal viewpoint set for a given area needed to cover, *i.e.*, our proposed ***Iterative Updates of Viewpoint Pose***.
 
+We provide a simple case of indoor scenes using normal vectors to generate initial viewpoints and then update them.Run ```Rviz``` for visualization and open another terminal for viewpoint generation execution:
+```shell
+sudo cpufreq-set -g performance
+source devel/setup.zsh && roslaunch viewpoint_manager rviz_demo.launch
+source devel/setup.zsh && roslaunch viewpoint_manager test_demo.launch
+```
+
 Specifically, we give a 3D case guided by skeleton. Run ```Rviz``` for visualization and open another terminal for viewpoint generation execution:
 ```shell
 sudo cpufreq-set -g performance
