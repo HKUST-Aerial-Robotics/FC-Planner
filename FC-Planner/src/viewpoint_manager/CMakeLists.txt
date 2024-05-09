@@ -56,6 +56,7 @@ target_link_libraries( viewpoint_manager
     ${PCL_LIBRARIES}
     )  
 
+# viewpoint_manager_node
 add_executable(viewpoint_manager_node
     src/viewpoint_manager_node.cpp
 )
@@ -66,6 +67,7 @@ target_link_libraries(viewpoint_manager_node
     ${PCL_LIBRARIES}
     )
 
+# skeleton_viewpoint_node
 add_executable(skeleton_viewpoint_node
     src/skeleton_viewpoint_node.cpp
     src/skeleton_viewpoint.cpp

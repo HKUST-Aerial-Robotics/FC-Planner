@@ -458,16 +458,15 @@ namespace predrecon
       inside_flag = percep_utils_->insideFOV(id_vox.second);
       if (inside_flag == true)
       {
-        // Filter out some obstacles
+        // Filter out non-surface obstacles
         Vector3d pos1 = id_vox.second;
         Vector3d pos2 = viewpoint;
         Vector3d free_pose = pos1;
         raycaster_->input(pos1, pos2);
-        raycaster_->nextId(idx);
         int count = 0;
         while (raycaster_->nextId(idx))
         {
-          if (HCMap->occCheck(idx))
+          if (HCMap->occCheck(idx)) // is free
           {
             count++;
             if (count == 2)
@@ -549,7 +548,7 @@ namespace predrecon
       pt_vec(2) = model_->points[i].z;
       if (percep_utils_->insideFOV(pt_vec))
       {
-        // Filter out some obstacles
+        // Filter out non-surface obstacles
         Vector3d pos1 = pt_vec;
         Vector3d pos2 = position_;
         Vector3d free_pose = pt_vec;
@@ -557,14 +556,13 @@ namespace predrecon
         int count = 0;
         while (raycaster_->nextId(idx))
         {
-          if (HCMap->occCheck(idx))
+          if (HCMap->occCheck(idx)) // is free
           {
             count++;
             if (count == 2)
               break;
           }
         }
-        raycaster_->nextId(idx);
         HCMap->indexToPos_hc(idx, free_pose);
 
         // Bidirectional Ray Casting
@@ -834,7 +832,6 @@ namespace predrecon
       {
         for (int i = 0; i < (int)inner_idx.size(); ++i)
         {
-          // updatePoseGravitation
           vis_flag = true;
           vis_flag_rev = true;
           visible_candidate(0) = model_->points[inner_idx[i]].x;
@@ -949,6 +946,8 @@ namespace predrecon
   {
     double max_pitch_range = 40.0; // random max pitch angle
     double max_yaw_range = 40.0;   // random max yaw angle
+    if (attitude == "yaw")
+      max_pitch_range = 0;
     vector<pcl::PointNormal> unc_vps;
 
     Eigen::Vector3d oriNormal;
