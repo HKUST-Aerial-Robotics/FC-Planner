@@ -392,6 +392,7 @@ namespace predrecon
         if (visible_flag == false || visible_flag_rev == false)
           break;
       }
+      visible_flag = HCMap->occCheck(idx);
       if (visible_flag == true && visible_flag_rev == true)
       {
         ray_dir = (visible_candidate - viewpoint).normalized();
@@ -487,6 +488,7 @@ namespace predrecon
           if (visible_flag == false || visible_flag_rev == false)
             break;
         }
+        visible_flag = HCMap->occCheck(idx);
         if (visible_flag == true && visible_flag_rev == true)
         {
           contribute_voxel_num++;
@@ -575,6 +577,7 @@ namespace predrecon
           if (vis_flag == false || vis_flag_rev == false)
             break;
         }
+        vis_flag = HCMap->occCheck(idx);
         if (vis_flag == true && vis_flag_rev == true)
         {
           contribute_voxel_num++;
@@ -847,7 +850,7 @@ namespace predrecon
             if (vis_flag == false || vis_flag_rev == false)
               break;
           }
-
+          vis_flag = HCMap->occCheck(idx);
           if (vis_flag == true && vis_flag_rev == true)
           {
             ray_dir = (visible_candidate - updated_position).normalized();

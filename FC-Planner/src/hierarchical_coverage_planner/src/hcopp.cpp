@@ -103,6 +103,7 @@ namespace predrecon
     ROS_INFO("\033[35m[Traj] --- <Trajectory Generation finished> --- \033[35m");
     
     // * FC-Planner Trajectory Coverage Evaluation
+    ROS_INFO("\033[36m[CoverageAnalyzer] Wait for CoverageAnalyzer...... \033[32m");
     TrajGen_->outputTraj(freq);
     double coverageRate = PathPlanner_->CoverageEvaluation(TrajGen_->TrajPose);
     TrajGen_->outputCloud(PathPlanner_->visible_group, freq);

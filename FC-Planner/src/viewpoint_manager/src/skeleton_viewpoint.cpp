@@ -3,7 +3,7 @@
  * Homepage     :    https://chen-albert-feng.github.io/AlbertFeng.github.io/
  * Date         :    Apr. 2024
  * E-mail       :    cfengag at connect dot ust dot hk.
- * Description  :    This file is one example of independent skeleton-guided 
+ * Description  :    This file is one example of independent skeleton-guided
  *                    viewpoint generation.
  * License      :    GNU General Public License <http://www.gnu.org/licenses/>.
  * Project      :    FC-Planner is free software: you can redistribute it and/or
@@ -18,7 +18,7 @@
  * Website      :    https://hkust-aerial-robotics.github.io/FC-Planner/
  *⭐⭐⭐*****************************************************************⭐⭐⭐*/
 
-#include<viewpoint_manager/skeleton_viewpoint.h>
+#include <viewpoint_manager/skeleton_viewpoint.h>
 
 namespace predrecon
 {
@@ -30,7 +30,7 @@ namespace predrecon
   {
   }
 
-  void SkeletonViewpoint::init(ros::NodeHandle& nh)
+  void SkeletonViewpoint::init(ros::NodeHandle &nh)
   {
     // * Module Initialization
     skeleton_operator.reset(new ROSA_main);
@@ -66,7 +66,7 @@ namespace predrecon
     ROS_INFO("\033[35m[SkeletonViewpoint] Initialized! \033[32m");
   }
 
-  void SkeletonViewpoint::execution(ros::NodeHandle& nh)
+  void SkeletonViewpoint::execution(ros::NodeHandle &nh)
   {
     // * Skeleton-based Space Decomposition
     skeleton_operator->main();
@@ -201,7 +201,7 @@ namespace predrecon
     ROS_INFO("\033[35m[SkeletonViewpoint] --- <Skeleton Viewpoint Generation finished> --- \033[35m");
   }
 
-  void SkeletonViewpoint::visCallback(const ros::TimerEvent& e)
+  void SkeletonViewpoint::visCallback(const ros::TimerEvent &e)
   {
     // * revised normals using internal space
     pcl::PointCloud<pcl::PointXYZ> scene_model;
@@ -211,14 +211,14 @@ namespace predrecon
     pcl::Normal n_;
     for (const auto &pt_normal : PR.pt_normal_pairs)
     {
-    pt_.x = pt_normal.first(0);
-    pt_.y = pt_normal.first(1);
-    pt_.z = pt_normal.first(2);
-    n_.normal_x = pt_normal.second(0);
-    n_.normal_y = pt_normal.second(1);
-    n_.normal_z = pt_normal.second(2);
-    scene_model.points.push_back(pt_);
-    scene_normals.points.push_back(n_);
+      pt_.x = pt_normal.first(0);
+      pt_.y = pt_normal.first(1);
+      pt_.z = pt_normal.first(2);
+      n_.normal_x = pt_normal.second(0);
+      n_.normal_y = pt_normal.second(1);
+      n_.normal_z = pt_normal.second(2);
+      scene_model.points.push_back(pt_);
+      scene_normals.points.push_back(n_);
     }
 
     // * fov visualization of all active viewpoints
@@ -229,16 +229,16 @@ namespace predrecon
     for (int i = 0; i < (int)valid_viewpoints.size(); ++i)
     {
 
-    pos(0) = valid_viewpoints[i](0);
-    pos(1) = valid_viewpoints[i](1);
-    pos(2) = valid_viewpoints[i](2);
-    pitch = valid_viewpoints[i](3);
-    yaw = valid_viewpoints[i](4);
-    percep_utils_->setPose_PY(pos, pitch, yaw);
-    percep_utils_->getFOV_PY(l1, l2);
+      pos(0) = valid_viewpoints[i](0);
+      pos(1) = valid_viewpoints[i](1);
+      pos(2) = valid_viewpoints[i](2);
+      pitch = valid_viewpoints[i](3);
+      yaw = valid_viewpoints[i](4);
+      percep_utils_->setPose_PY(pos, pitch, yaw);
+      percep_utils_->getFOV_PY(l1, l2);
 
-    total1.push_back(l1);
-    total2.push_back(l2);
+      total1.push_back(l1);
+      total2.push_back(l2);
     }
 
     // * updated viewpoints in each sub-space
@@ -250,9 +250,9 @@ namespace predrecon
     int s_id;
     for (auto &sub_vps : PR.final_sub_vps_pairs)
     {
-    s_id = sub_vps.first;
-    for (int i = 0; i < (int)sub_vps.second.size(); ++i)
-    {
+      s_id = sub_vps.first;
+      for (int i = 0; i < (int)sub_vps.second.size(); ++i)
+      {
 
         pos_(0) = sub_vps.second[i](0);
         pos_(1) = sub_vps.second[i](1);
@@ -265,7 +265,7 @@ namespace predrecon
         sub_list1[s_id].push_back(l1_);
         sub_list2[s_id].push_back(l2_);
         sub_yaws[s_id].push_back(yaw_);
-    }
+      }
     }
 
     // * publish visualization
@@ -460,7 +460,7 @@ namespace predrecon
           filter_dir_(2) = vp.normal_z;
           // if (filter_dir_.norm() < 1e-3)
           //   cout << "Error: vp normal direction is zero!" << endl;
-          
+
           PR.vp_direction_pairs[filter_vp_] = filter_dir_;
           safe_vp.x = vp.x;
           safe_vp.y = vp.y;
@@ -560,9 +560,14 @@ namespace predrecon
       {
         fwdFlag = HCMap->occCheck(idxFwd);
         revFlag = HCMap->occCheck(idxRev);
-        if (fwdFlag == true || revFlag == true)
+        if (fwdFlag == false)
+          crossCount++;
+        if (revFlag == false)
           crossCount++;
       }
+      fwdFlag = HCMap->occCheck(idxFwd);
+      if (fwdFlag == false)
+        crossCount++;
       // cross even number: inside, cross odd number: outside
       if (crossCount % 2 == 0)
         checkFlags.push_back(false);
@@ -669,7 +674,7 @@ namespace predrecon
       Eigen::VectorXd oPNormal;
       oPNormal.resize(6);
       oPNormal << pt_normal.first(0), pt_normal.first(1), pt_normal.first(2), pt_normal.second(0), pt_normal.second(1), pt_normal.second(2);
-      
+
       PR.outer_normals.push_back(oPNormal);
     }
   }
@@ -691,5 +696,5 @@ namespace predrecon
         PR.pt_proj_pairs[pt_vec] = point_on_plane;
       }
     }
-  }  
+  }
 } // namespace predrecon
