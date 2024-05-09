@@ -1,5 +1,5 @@
 <launch>
-    <!-- SCENE : Marina Bay Sands -->
+    <!-- SCENE : 2.5D Office -->
     <arg name="fov_h" value="70.0"/>
     <arg name="fov_w" value="85.0"/>
     <arg name="max_dist" value="3.2"/>

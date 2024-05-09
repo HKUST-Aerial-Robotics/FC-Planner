@@ -391,12 +391,9 @@ bool RayCaster::input(const Eigen::Vector3d& start, const Eigen::Vector3d& end) 
 
 bool RayCaster::biInput(const Eigen::Vector3d& start, const Eigen::Vector3d& end)
 {
-  Eigen::Vector3d dir_se = end - start;
-  double norm_se = dir_se.norm();
-  Eigen::Vector3d end_new = start + dir_se.normalized() * norm_se;
   start_ = start / resolution_;
-  inter_ = 0.5*(start+end_new) / resolution_;
-  end_ = end_new / resolution_;
+  inter_ = (0.5*(start+end)) / resolution_;
+  end_ = end / resolution_;
   
   x_ = (int)std::floor(start_.x());
   y_ = (int)std::floor(start_.y());

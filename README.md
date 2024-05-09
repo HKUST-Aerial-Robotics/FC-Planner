@@ -117,14 +117,7 @@ As for your ***customerized scene*** and ***more details***, you can find in [ro
 
 Here we provide an independent package of finding the minimal viewpoint set for a given area needed to cover, *i.e.*, our proposed ***Iterative Updates of Viewpoint Pose***.
 
-We provide a simple case of indoor scenes using normal vectors to generate initial viewpoints and then update them.Run ```Rviz``` for visualization and open another terminal for viewpoint generation execution:
-```shell
-sudo cpufreq-set -g performance
-source devel/setup.zsh && roslaunch viewpoint_manager rviz_demo.launch
-source devel/setup.zsh && roslaunch viewpoint_manager test_demo.launch
-```
-
-Additionally, we give a 3D case guided by skeleton. Run ```Rviz``` for visualization and open another terminal for viewpoint generation execution:
+Specifically, we give a 3D case guided by skeleton. Run ```Rviz``` for visualization and open another terminal for viewpoint generation execution:
 ```shell
 sudo cpufreq-set -g performance
 source devel/setup.zsh && roslaunch viewpoint_manager rviz.launch
@@ -136,7 +129,19 @@ Afterwards, you will see the viewpoint generation results of Marina Bay Sands in
   <img src="misc/iterative_updates.png" width = 80% height = 60%/>
 </p>
 
-You can also use other guidance to generate viewpoints, *e.g.*, normals. For more usage details, you can find in [viewpoint manager doc](./FC-Planner/src/viewpoint_manager/README.md).  
+You can also use other guidance to generate viewpoints, *e.g.*, normals. For example, we give a 2.5D case (indoor office) using normal guidance to generate viewpoints.
+```shell
+sudo cpufreq-set -g performance
+source devel/setup.zsh && roslaunch viewpoint_manager rviz_normal.launch
+source devel/setup.zsh && roslaunch viewpoint_manager normal.launch
+```
+
+Afterwards, you will see the viewpoint generation results of this 2.5D case in your ```Rviz``` as follows:
+<p align="center">
+  <img src="misc/2.5D_case.png" width = 80% height = 60%/>
+</p>
+
+For more usage details, you can find in [viewpoint manager doc](./FC-Planner/src/viewpoint_manager/README.md). 
 
 ## 🎮 Demo
 

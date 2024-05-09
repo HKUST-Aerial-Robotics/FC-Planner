@@ -1,6 +1,6 @@
 /*⭐⭐⭐******************************************************************⭐⭐⭐*
  * Author       :    Chen Feng <cfengag at connect dot ust dot hk>, UAV Group, ECE, HKUST.
-                     Mingjie Zhang <zagerzhang at gmail dot com>, STAR Lab, SYSU.
+                     Mingjie Zhang <zagerzhang at gmail dot com>, STAR Group, SYSU.
  * Homepage     :    https://chen-albert-feng.github.io/AlbertFeng.github.io/
  * Date         :    Apr. 2024
  * E-mail       :    cfengag at connect dot ust dot hk.
@@ -134,6 +134,9 @@ int main(int argc, char **argv)
     viewpoint_manager_->setInitViewpoints(vps);
     viewpoint_manager_->updateViewpoints();
     viewpoint_manager_->getUpdatedViewpoints(updated_vps);
+    
+    ROS_INFO("\033[33m[NormalViewpoint] all viewpoint quantity = %d. \033[32m", (int)updated_vps.size());
+    ROS_INFO("\033[35m[NormalViewpoint] --- <Normal Viewpoint Generation finished> --- \033[35m");
 
     /* For visualization */
     pcl::PointCloud<pcl::PointNormal>::Ptr up_vps(new pcl::PointCloud<pcl::PointNormal>);

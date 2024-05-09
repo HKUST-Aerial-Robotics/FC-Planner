@@ -24,7 +24,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: INPUT_Occ
+    SyncSource: ""
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -182,7 +182,7 @@ Visualization Manager:
           Marker Topic: /updated_viewpoints
           Name: pose
           Namespaces:
-            viewpoints: true
+            {}
           Queue Size: 100
           Value: true
         - Class: rviz/MarkerArray
@@ -190,7 +190,7 @@ Visualization Manager:
           Marker Topic: /updated_viewpoints_fov
           Name: fov
           Namespaces:
-            FOV: true
+            {}
           Queue Size: 100
           Value: true
       Enabled: true
@@ -320,5 +320,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1408
-  X: 24
-  Y: 744
+  X: 2882
+  Y: 159
