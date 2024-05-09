@@ -874,7 +874,7 @@ namespace predrecon
     searchVP.z = vpCandi(2);
     ROSATree.nearestKSearch(searchVP, K, nearest_id, nn_squared_distance);
 
-    // convex detection: BiRC
+        // convex detection: BiRC
     Eigen::Vector3i idxFwd, idxRev;
     vector<bool> checkFlags;
     bool fwdFlag, revFlag;
@@ -890,9 +890,14 @@ namespace predrecon
       {
         fwdFlag = HCMap->occCheck(idxFwd);
         revFlag = HCMap->occCheck(idxRev);
-        if (fwdFlag == true || revFlag == true)
+        if (fwdFlag == false)
+          crossCount++;
+        if (revFlag == false)
           crossCount++;
       }
+      fwdFlag = HCMap->occCheck(idxFwd);
+      if (fwdFlag == false)
+        crossCount++;
       // cross even number: inside, cross odd number: outside
       if (crossCount % 2 == 0)
         checkFlags.push_back(false);
