@@ -59,7 +59,7 @@
   <param name="viewpoint_manager/safeHeight" value="1.5" type="double"/>
   <param name="viewpoint_manager/safe_radius" value="3.0" type="double"/>
   <param name="viewpoint_manager/attitude_type" value="all" type="string"/> <!-- attitude_type : 1) yaw 2) all -> (pitch, yaw) -->
-  <param name="viewpoint_manager/max_iter_num" value="2" type="int"/> 
+  <param name="viewpoint_manager/max_iter_num" value="5" type="int"/> 
   <param name="viewpoint_manager/pose_update" value="true" type="bool"/> 
 </node>
 
