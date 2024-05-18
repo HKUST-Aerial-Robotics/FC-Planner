@@ -1,7 +1,7 @@
 <div align="center">
     <h1>⚽ FC-Planner</h1>
     <h2>A Skeleton-guided Planning Framework for Fast Aerial Coverage of Complex 3D Scenes</h2>
-    <strong>ICRA 2024</strong>
+    <strong>ICRA 2024</strong> <strong style="color: red;">Best UAV Paper Award Finalist</strong>
     <br>
         <a href="https://chen-albert-feng.github.io/AlbertFeng.github.io/" target="_blank">Chen Feng</a><sup>2</sup>,
         <a href="https://uav.hkust.edu.hk/current-members/" target="_blank">Haojia Li</a><sup>2</sup>,
@@ -20,12 +20,13 @@
     <a href='https://arxiv.org/pdf/2309.13882.pdf'><img src='https://img.shields.io/badge/arXiv-2309.13882-red' alt='arxiv'></a>
     <a href='https://hkust-aerial-robotics.github.io/FC-Planner/'><img src='https://img.shields.io/badge/Project_Page-FC_Planner-green' alt='Project Page'></a>
     <a href="https://www.youtube.com/watch?v=U-X4OddXI88"><img alt="YouTube" src="https://img.shields.io/badge/YouTube-Video-blue"/></a>
+    <a href="https://www.bilibili.com/video/BV1Fr421j7oC/?spm_id_from=333.999.0.0&vd_source=0af61c122e5e37c944053b57e313025a"><img alt="Talk" src="https://img.shields.io/badge/BiliBili-Talk-purple"/></a>
 </div>
 
 ## 📢 News
 
-* **[02/05/2024]**: All remaining code is released (Viewpoint generation & Planning).
-* **[06/04/2024]**: Code of Skeleton-based Space Decomposition (SSD) is released.
+* **[16/05/2024]**: FC-Planner is selected as the **finalist** for ICRA 2024 **Best UAV Paper Award**.
+* **[02/05/2024]**: All code of FC-Planner is released.
 * **[15/03/2024]**: FC-Planner is extended to multi-UAV autonomous reconstruction as FC-Hetero, check this [repo](https://github.com/SYSU-STAR/FC-Hetero) for details.
 * **[29/01/2024]**: FC-Planner is accepted to ICRA 2024.
 
