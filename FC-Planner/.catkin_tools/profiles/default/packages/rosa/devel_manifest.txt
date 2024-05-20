@@ -1,0 +1,7 @@
+rosa
+/home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/devel/.private/rosa/cmake.lock /home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/devel/./cmake.lock
+/home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/devel/.private/rosa/lib/librosa.so /home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/devel/lib/librosa.so
+/home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/devel/.private/rosa/lib/rosa/rosa_exec /home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/devel/lib/rosa/rosa_exec
+/home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/devel/.private/rosa/lib/pkgconfig/rosa.pc /home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/devel/lib/pkgconfig/rosa.pc
+/home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/devel/.private/rosa/share/rosa/cmake/rosaConfig-version.cmake /home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/devel/share/rosa/cmake/rosaConfig-version.cmake
+/home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/devel/.private/rosa/share/rosa/cmake/rosaConfig.cmake /home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/devel/share/rosa/cmake/rosaConfig.cmake

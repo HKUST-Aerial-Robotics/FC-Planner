@@ -57,20 +57,34 @@ Please kindly star ⭐️ this project if it helps you. We take great efforts to
 
 ## 🛠️ Installation
 
+**Prerequisite:**
 * ROS Noetic (Ubuntu 20.04) or ROS Melodic (Ubuntu 18.04)
-* PCL 1.7
+* PCL 1.7+
 * Eigen3
-
-The project has been tested on Ubuntu 20.04 LTS (ROS Noetic) and Ubuntu 18.04 LTS (ROS Melodic). Directly clone our package (using ssh here):
-
 ```shell
   sudo apt update
   sudo apt install cpufrequtils
   sudo apt install libompl-dev
+```
+
+The project has been tested on Ubuntu 20.04 LTS (ROS Noetic) and Ubuntu 18.04 LTS (ROS Melodic). Directly clone our package (using ssh here):
+
+**1) caktin tools (Recommended)**
+```shell
+  git clone git@github.com:HKUST-Aerial-Robotics/FC-Planner.git
+  cd FC-Planner
+  catkin config -DCMAKE_BUILD_TYPE=Release
+  catkin build
+```
+If you have installed ***Anaconda***, please use ```catkin build -DPYTHON_EXECUTABLE=/usr/bin/python3```.
+
+**2) caktin make**
+```shell
   git clone git@github.com:HKUST-Aerial-Robotics/FC-Planner.git
   cd FC-Planner
   catkin_make
 ```
+If you have installed ***Anaconda***, please use ```catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3```.
 
 ## 🚀 Quick Start
 
