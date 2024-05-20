@@ -51,7 +51,6 @@
 #include <chrono>
 #include <math.h>
 #include <time.h>
-#include <ceres/ceres.h>
 
 using namespace std;
 using std::unique_ptr;
