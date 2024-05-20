@@ -18,7 +18,6 @@ find_package(Eigen3 REQUIRED)
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES rosa
-  DEPENDS system_lib
   CATKIN_DEPENDS traj_utils
 )
 

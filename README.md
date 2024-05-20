@@ -74,17 +74,17 @@ The project has been tested on Ubuntu 20.04 LTS (ROS Noetic) and Ubuntu 18.04 LT
   git clone git@github.com:HKUST-Aerial-Robotics/FC-Planner.git
   cd FC-Planner
   catkin config -DCMAKE_BUILD_TYPE=Release
-  catkin build
+  catkin build --cmake-args -Wno-dev
 ```
-If you have installed ***Anaconda***, please use ```catkin build -DPYTHON_EXECUTABLE=/usr/bin/python3```.
+If you have installed ***Anaconda***, please use ```catkin build --cmake-args -Wno-dev -DPYTHON_EXECUTABLE=/usr/bin/python3```.
 
 **2) caktin make**
 ```shell
   git clone git@github.com:HKUST-Aerial-Robotics/FC-Planner.git
   cd FC-Planner
-  catkin_make
+  catkin_make --cmake-args -Wno-dev
 ```
-If you have installed ***Anaconda***, please use ```catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3```.
+If you have installed ***Anaconda***, please use ```catkin_make --cmake-args -Wno-dev -DPYTHON_EXECUTABLE=/usr/bin/python3```.
 
 ## 🚀 Quick Start
 

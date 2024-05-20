@@ -24,7 +24,6 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES viewpoint_manager skeleton_viewpoint
   CATKIN_DEPENDS traj_utils plan_env
-  DEPENDS system_lib
 )
 
 include_directories( 

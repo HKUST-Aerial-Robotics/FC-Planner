@@ -4,7 +4,7 @@ build_space: build
 catkin_make_args: []
 cmake_args:
 - -DCMAKE_BUILD_TYPE=Release
-- -DPYTHON_EXECUTABLE=/usr/bin/python3
+- -Wno-dev
 devel_layout: linked
 devel_space: devel
 extend_path: null

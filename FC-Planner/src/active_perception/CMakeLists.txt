@@ -21,7 +21,6 @@ catkin_package(
  INCLUDE_DIRS include
  LIBRARIES active_perception
  CATKIN_DEPENDS plan_env
- DEPENDS system_lib
 )
 
 include_directories( 

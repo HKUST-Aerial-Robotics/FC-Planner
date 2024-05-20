@@ -23,7 +23,6 @@ catkin_package(
  INCLUDE_DIRS include
  LIBRARIES plan_env
  CATKIN_DEPENDS roscpp std_msgs
-#  DEPENDS system_lib
 )
 
 include_directories( 

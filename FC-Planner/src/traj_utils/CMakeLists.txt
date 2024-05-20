@@ -20,7 +20,6 @@ catkin_package(
  INCLUDE_DIRS include
  LIBRARIES traj_utils
  CATKIN_DEPENDS
-#  DEPENDS system_lib
 )
 
 include_directories( 

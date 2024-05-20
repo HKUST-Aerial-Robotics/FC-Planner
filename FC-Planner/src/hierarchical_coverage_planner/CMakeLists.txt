@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
+cmake_policy(SET CMP0048 OLD)
 project(hierarchical_coverage_planner)
 
 set(CMAKE_BUILD_TYPE "Release")
@@ -26,7 +27,7 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES hcplanner
   CATKIN_DEPENDS rosa traj_utils plan_env
-  DEPENDS system_lib OpenCV
+  DEPENDS OpenCV
 )
 
 include_directories( 
