@@ -155,7 +155,6 @@ public:
 private:
   /* Func */
   void pcloud_read_off();
-  void pcloud_vis();
   double mahalanobis_leth(pcl::PointXYZ& p1, pcl::Normal& v1, pcl::PointXYZ& p2, pcl::Normal& v2, double& r);
   void pcloud_adj_matrix_mahalanobis(double& r_range);
   Eigen::Matrix3d create_orthonormal_frame(Eigen::Vector3d& v);
@@ -214,7 +213,6 @@ private:
   vector<vector<int>> divide_branch(vector<int>& input_branch);
   vector<int> merge_branch(vector<int>& input_branch);
   bool prune(vector<int>& input_branch);
-  vector<int> query_cut_plane_pts(Eigen::Vector3d& p_plane, Eigen::Vector3d& v_plane);
   double distance_point_line(Eigen::Vector3d& point, Eigen::Vector3d& line_pt, Eigen::Vector3d& line_dir);
   Eigen::Vector3d PCA(Eigen::MatrixXd& A);
   /* Timer */

@@ -1812,54 +1812,6 @@ namespace predrecon
     return prune_flag;
   }
 
-  vector<int> ROSA_main::query_cut_plane_pts(Eigen::Vector3d& p_plane, Eigen::Vector3d& v_plane)
-  {
-    vector<int> o_indxs, indxs;
-    vector<int> isoncut(pcd_size_,0);
-    pcloud_isoncut(p_plane, v_plane, isoncut, P.datas, pcd_size_);
-    /* find nearest point */
-    Eigen::Vector3d in_plane_pt;
-    double distance=1001.0, distance_min=1000.0; int nearest_idx=-1;
-    for (int i=0; i<(int)isoncut.size(); ++i)
-    {
-      if (isoncut[i]>0)
-      {
-        /* search */
-        in_plane_pt = P.pts_mat.row(i);
-        distance = (p_plane-in_plane_pt).norm();
-        if (distance <= distance_min)
-        {
-          nearest_idx = i;
-          distance_min = distance; 
-        }
-      }
-    }
-    /* find neighborhood */
-    deque<int> queue; queue.push_back(nearest_idx);
-    int curr;
-    while (!((bool)queue.empty()))
-    {
-      curr = queue[0];
-      queue.pop_front();
-      isoncut[curr] = 2;
-      if (P.pts_distributed[curr] == false)
-        o_indxs.push_back(curr);
-      vector<int>().swap(indxs);
-      for (int i=0; i<(int)P.neighs[curr].size(); ++i)
-      {
-        if (isoncut[P.neighs[curr][i]] == 1)
-          indxs.push_back(P.neighs[curr][i]);
-      }
-      for (int j=0; j<(int)indxs.size(); ++j)
-      {
-        isoncut[indxs[j]] = 3;
-        queue.push_back(indxs[j]);
-      }
-    }
-    
-    return o_indxs;
-  }
-
   double ROSA_main::distance_point_line(Eigen::Vector3d& point, Eigen::Vector3d& line_pt, Eigen::Vector3d& line_dir)
   {
     // Find a point on the line closest to the given point
