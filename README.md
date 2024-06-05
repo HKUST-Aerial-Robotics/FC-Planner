@@ -169,6 +169,10 @@ For more usage details, you can find in [viewpoint manager doc](./FC-Planner/src
 <p align="center">
   <img src="misc/realworld.gif"/>
 </p>
+Since ICRA2024 is held in Pacifico, Yokohama, we specially prepared a demo reconstructing Pacifico center for the conference, as shown in below.
+<p align="center">
+  <img src="misc/pacifico_anmi.gif" width = 94% height = 94%/>
+</p>
 
 ## 🤗 FC-family Works
 
