@@ -79,7 +79,7 @@ MatrixXd Extra_Del::rows_del_M(MatrixXd ind, MatrixXd matrix){
 	}
 	for (int i = 0; i < ind.size(); i++)
 	{
-		xl(ind(i)) = NAN;
+		xl.coeffRef(ind(i)) = std::numeric_limits<double>::quiet_NaN();
 	}
 	VectorXd out_index(num - ind.size());
 	int index(0);
@@ -114,7 +114,7 @@ MatrixXd Extra_Del::cols_del_M(MatrixXd ind, MatrixXd matrix){
 	}
 	for (int i = 0; i < ind.size(); i++)
 	{
-		xl(ind(i)) = NAN;
+		xl.coeffRef(ind(i)) = std::numeric_limits<double>::quiet_NaN();
 	}
 	VectorXd out_index(num - ind.size());
 	int index(0);

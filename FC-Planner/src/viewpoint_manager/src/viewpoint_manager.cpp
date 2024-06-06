@@ -58,7 +58,7 @@ namespace predrecon
     percep_utils_->init(nh);
     HCMap.reset(new SDFMap);
 
-    ROS_WARN("[ViewpointManager] Initialized!");
+    ROS_INFO("\033[34m[ViewpointManager] Initialized!\033[34m");
   }
 
   void ViewpointManager::reset()
