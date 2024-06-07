@@ -75,6 +75,8 @@ The project has been tested on Ubuntu 20.04 LTS (ROS Noetic) and Ubuntu 18.04 LT
   cd FC-Planner
   catkin config -DCMAKE_BUILD_TYPE=Release
   catkin build --cmake-args -Wno-dev
+  cd src/hierarchical_coverage_planner/solution/LKH
+  make
 ```
 If you have installed ***Anaconda***, please use ```catkin build --cmake-args -Wno-dev -DPYTHON_EXECUTABLE=/usr/bin/python3```.
 
@@ -83,6 +85,8 @@ If you have installed ***Anaconda***, please use ```catkin build --cmake-args -W
   git clone git@github.com:HKUST-Aerial-Robotics/FC-Planner.git
   cd FC-Planner
   catkin_make --cmake-args -Wno-dev
+  cd src/hierarchical_coverage_planner/solution/LKH
+  make
 ```
 If you have installed ***Anaconda***, please use ```catkin_make --cmake-args -Wno-dev -DPYTHON_EXECUTABLE=/usr/bin/python3```.
 
@@ -91,6 +95,7 @@ If you have installed ***Anaconda***, please use ```catkin_make --cmake-args -Wn
 Run ```Rviz``` for coverage flight visualization and open another terminal for running the simulation:
 ```shell
 sudo cpufreq-set -g performance
+cd FC-Planner
 source devel/setup.zsh && roslaunch hierarchical_coverage_planner rviz.launch
 source devel/setup.zsh && roslaunch hierarchical_coverage_planner mbs.launch
 ```
@@ -117,6 +122,7 @@ The individual package of SSD is given for your purposeful usage, where some exa
 Run ```Rviz``` for SSD visualization and open another terminal for SSD execution:
 ```shell
 sudo cpufreq-set -g performance
+cd FC-Planner
 source devel/setup.zsh && roslaunch rosa rviz.launch
 source devel/setup.zsh && roslaunch rosa ${SCENE}.launch (e.g., redbird.launch)
 ```
@@ -135,6 +141,7 @@ Here we provide an independent package of finding the minimal viewpoint set for 
 Specifically, we give a 3D case guided by skeleton. Run ```Rviz``` for visualization and open another terminal for viewpoint generation execution:
 ```shell
 sudo cpufreq-set -g performance
+cd FC-Planner
 source devel/setup.zsh && roslaunch viewpoint_manager rviz.launch
 source devel/setup.zsh && roslaunch viewpoint_manager mbs.launch
 ```
@@ -147,6 +154,7 @@ Afterwards, you will see the viewpoint generation results of Marina Bay Sands in
 You can also use other guidance to generate viewpoints, *e.g.*, normals. For example, we give a 2.5D case (indoor office) using normal guidance to generate viewpoints.
 ```shell
 sudo cpufreq-set -g performance
+cd FC-Planner
 source devel/setup.zsh && roslaunch viewpoint_manager rviz_normal.launch
 source devel/setup.zsh && roslaunch viewpoint_manager normal.launch
 ```
