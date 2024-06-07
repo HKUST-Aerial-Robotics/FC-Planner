@@ -84,6 +84,7 @@ If you have installed ***Anaconda***, please use ```catkin build --cmake-args -W
 ```shell
   git clone git@github.com:HKUST-Aerial-Robotics/FC-Planner.git
   cd FC-Planner
+  catkin config -DCMAKE_BUILD_TYPE=Release
   catkin_make --cmake-args -Wno-dev
   cd src/hierarchical_coverage_planner/solution/LKH
   make
