@@ -61,7 +61,6 @@ Please kindly star ⭐️ this project if it helps you. We take great efforts to
 * ROS Noetic (Ubuntu 20.04) or ROS Melodic (Ubuntu 18.04)
 * PCL 1.7+
 * Eigen3.4+ (3.4.1 Recommended)
-* gcc 9 (9.4.0 Recommended)
 ```shell
   sudo apt update
   sudo apt install cpufrequtils
