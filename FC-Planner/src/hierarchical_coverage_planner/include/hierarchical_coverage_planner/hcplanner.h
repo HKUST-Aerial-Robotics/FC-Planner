@@ -183,7 +183,7 @@ private:
   void CoveragePlan(bool turn);
   /* Params */
   double dist_vp, model_ds_size, safe_radius_vp;
-  double fov_h, fov_w, fov_base, voxel_size;
+  double fov_h, fov_w, fov_base;
   double cx, cy, fx, fy;
   double normal_step;
   string mode_;
@@ -207,7 +207,7 @@ private:
   shared_ptr<PlanningVisualization> vis_utils_;
   shared_ptr<SDFMap> HCMap;
   shared_ptr<ViewpointManager> viewpoint_manager_;
-  unique_ptr<RayCaster> raycaster_, raycaster_rev;
+  unique_ptr<RayCaster> raycaster_;
   unique_ptr<PerceptionUtils> percep_utils_;
   unique_ptr<HCSolver> solver_;
   

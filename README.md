@@ -79,6 +79,12 @@ The project has been tested on Ubuntu 20.04 LTS (ROS Noetic) and Ubuntu 18.04 LT
   make
 ```
 If you have installed ***Anaconda***, please use ```catkin build --cmake-args -Wno-dev -DPYTHON_EXECUTABLE=/usr/bin/python3```.
+Tips: You can use ```ccache``` to accelerate compilation.
+```shell
+sudo apt-get install ccache
+catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+catkin build --continue-on-failure
+```
 
 **2) caktin make**
 ```shell

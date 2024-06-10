@@ -222,7 +222,7 @@ namespace predrecon
 
     /* Utils */
     shared_ptr<SDFMap> HCMap;
-    unique_ptr<RayCaster> raycaster_, raycaster_rev;
+    unique_ptr<RayCaster> raycaster_;
     unique_ptr<PerceptionUtils> percep_utils_;
 
     /* Data */
