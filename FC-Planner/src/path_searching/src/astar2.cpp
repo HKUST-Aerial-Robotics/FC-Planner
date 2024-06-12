@@ -32,7 +32,7 @@ Astar::~Astar() {
     delete path_node_pool_[i];
 }
 
-void Astar::init_hc(ros::NodeHandle& nh, const SDFMap::Ptr& hc_map_)
+void Astar::init_hc(ros::NodeHandle& nh)
 {
   nh.param("astar/resolution_astar", resolution_, -1.0);
   nh.param("astar/lambda_heu_hc", lambda_heu_hc_, -1.0);
@@ -43,7 +43,6 @@ void Astar::init_hc(ros::NodeHandle& nh, const SDFMap::Ptr& hc_map_)
   nh.param("viewpoint_manager/safeHeight", safeheight, -1.0);
 
   tie_breaker_ = 1.0 + 1.0 / 1000;
-  this->map_hc_ = hc_map_;
   /* --- params --- */
   this->inv_resolution_ = 1.0 / resolution_;
   path_node_pool_.resize(allocate_num_);
@@ -54,6 +53,11 @@ void Astar::init_hc(ros::NodeHandle& nh, const SDFMap::Ptr& hc_map_)
   iter_num_ = 0;
   early_terminate_cost_ = 0.0;
 
+}
+
+void Astar::setMap(const SDFMap::Ptr& hc_map_)
+{
+  this->map_hc_ = hc_map_;
 }
 
 void Astar::setResolution(const double& res) {

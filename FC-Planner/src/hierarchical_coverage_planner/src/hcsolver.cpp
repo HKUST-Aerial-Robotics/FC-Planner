@@ -32,22 +32,16 @@ namespace predrecon
   HCSolver::~HCSolver(){
   }
 
-  void HCSolver::init(ros::NodeHandle& nh, Eigen::Vector3d& path_start_, SDFMap::Ptr& hcmap, double& res_, Eigen::Vector3d& origin_)
+  void HCSolver::init(ros::NodeHandle& nh, double& res_, Eigen::Vector3d& origin_)
   {
     // * Module Initialization
-    mt_nh_ = nh;
-
     astar_.reset(new Astar);
-    astar_->init_hc(nh, hcmap);
+    astar_->init_hc(nh);
 
     solve_raycaster_.reset(new RayCaster);
     solve_raycaster_->setParams(res_, origin_);
 
-    this->mt_map_ = hcmap;
-    this->solve_map_ = hcmap;
-
     // * Params Initialization
-    solver_start_ = path_start_;
     nh.param("hcplanner/precision_", precision_, -1);
     nh.param("hcplanner/global_solver", GlobalSolver_, string("null"));
     nh.param("hcplanner/global_par_file", GlobalPar_, string("null"));
@@ -64,6 +58,17 @@ namespace predrecon
     nh.param("hcplanner/yddmax_", ydd_, -1.0);
     nh.param("hcplanner/local2opt_trial", local2optNum, -1);
     nh.param("astar/searching_res", astarSearchingRes, -1.0);
+  }
+
+  void HCSolver::setStart(Eigen::Vector3d& start_)
+  {
+    solver_start_ = start_;
+  }
+
+  void HCSolver::setMap(SDFMap::Ptr& hcmap)
+  {
+    this->solve_map_ = hcmap;
+    astar_->setMap(hcmap);
   }
 
   vector<int> HCSolver::GlobalSubspaceSequence(map<int, vector<Eigen::VectorXd>>& sub_vps)

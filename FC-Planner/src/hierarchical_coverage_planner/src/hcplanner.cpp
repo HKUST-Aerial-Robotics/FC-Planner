@@ -40,6 +40,7 @@ namespace predrecon
     solver_.reset(new HCSolver);
     vis_utils_.reset(new PlanningVisualization(nh));
     viewpoint_manager_.reset(new ViewpointManager);
+    raycaster_.reset(new RayCaster);
 
     skeleton_operator->init(nh);
     percep_utils_->init(nh);
@@ -81,6 +82,11 @@ namespace predrecon
     visibleFullmodel.reset(new pcl::PointCloud<pcl::PointXYZ>);
     PR.occ_model.reset(new pcl::PointCloud<pcl::PointXYZ>);
     pcl::io::loadPCDFile<pcl::PointXYZ>(fullcloud, *PR.occ_model);
+
+    // * Mapping & Solver & Bidirectional Ray Casting (BiRC)
+    HCMap->initHCMap(nh, PR.occ_model);
+    solver_->init(nh, HCMap->hcmp_->resolution_, HCMap->hcmp_->map_origin_);
+    raycaster_->setParams(HCMap->hcmp_->resolution_, HCMap->hcmp_->map_origin_);
 
     // * Timer
     planning_vis_timer_ = nh.createTimer(ros::Duration(0.5), &hierarchical_coverage_planner::PlanningVisCallback, this);
@@ -134,7 +140,6 @@ namespace predrecon
     }
 
     // * Initialize Mapping
-    HCMap->initHCMap(nh, PR.occ_model);
     for (const auto &seg_cloud : skeleton_operator->P.seg_clouds_scale)
     {
       *PR.ori_model += *seg_cloud.second;
@@ -154,28 +159,6 @@ namespace predrecon
       *PR.model += *tempSeg;
     }
     ROS_INFO("\033[33m[Planner] input points size = %d. \033[32m", (int)PR.model->points.size());
-
-    // * Initialize States for [Iterative Updates of Viewpoint Pose]
-    Eigen::Vector2i contrib_id(-1, -1);
-
-    int seg_cloud_size;
-    vector<bool> temp_cover_state;
-    vector<double> temp_cover_contrib;
-    vector<Eigen::Vector2i> temp_contrib_id;
-    for (auto seg_id_set : skeleton_operator->P.branch_seg_pairs)
-      for (auto seg_id : seg_id_set)
-      {
-        seg_cloud_size = skeleton_operator->P.seg_clouds_scale[seg_id]->points.size();
-        temp_cover_state.clear();
-        temp_cover_state.resize(seg_cloud_size, false);
-        PR.cover_state[seg_id] = temp_cover_state;
-        temp_cover_contrib.clear();
-        temp_cover_contrib.resize(seg_cloud_size, -1.0);
-        PR.cover_contrib[seg_id] = temp_cover_contrib;
-        temp_contrib_id.clear();
-        temp_contrib_id.resize(seg_cloud_size, contrib_id);
-        PR.contrib_id[seg_id] = temp_contrib_id;
-      }
     model_tree.setInputCloud(PR.model);
     OriModelTree.setInputCloud(PR.ori_model);
 
@@ -208,11 +191,8 @@ namespace predrecon
     ROS_INFO("\033[33m[Planner] global mapping time = %lf ms. \033[32m", hcmap_time);
 
     // * Initialize Path Solver
-    solver_->init(nh, current_pos_, HCMap, HCMap->hcmp_->resolution_, HCMap->hcmp_->map_origin_);
-
-    // * Initialize Bidirectional Ray Casting (BiRC)
-    raycaster_.reset(new RayCaster);
-    raycaster_->setParams(HCMap->hcmp_->resolution_, HCMap->hcmp_->map_origin_);
+    solver_->setStart(current_pos_);
+    solver_->setMap(HCMap);
 
     // * Skeleton-guided Viewpoint Generation
     auto vpg_t1 = std::chrono::high_resolution_clock::now();

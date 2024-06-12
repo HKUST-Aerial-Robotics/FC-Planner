@@ -82,7 +82,9 @@ public:
   ~HCSolver();
 
   /* Func */
-  void init(ros::NodeHandle& nh, Eigen::Vector3d& path_start_, SDFMap::Ptr& hcmap, double& res_, Eigen::Vector3d& origin_);
+  void init(ros::NodeHandle& nh, double& res_, Eigen::Vector3d& origin_);
+  void setStart(Eigen::Vector3d& start_);
+  void setMap(SDFMap::Ptr& hcmap);
   vector<int> GlobalSubspaceSequence(map<int, vector<Eigen::VectorXd>>& sub_vps);
   map<int, vector<int>> GlobalBoundaryPoints(map<int, vector<Eigen::VectorXd>>& sub_vps, vector<int>& globalseq);
   tuple<map<int, vector<Eigen::VectorXd>>, map<int, vector<vector<Eigen::VectorXd>>>> LocalConditionalPath(
@@ -136,8 +138,6 @@ private:
   unique_ptr<Astar> astar_;
   unique_ptr<RayCaster> solve_raycaster_;
   shared_ptr<SDFMap> solve_map_;
-  SDFMap::Ptr mt_map_;
-  ros::NodeHandle mt_nh_;
   Eigen::MatrixXd GlobalCostMat(Eigen::Vector3d& start_, vector<Eigen::Vector3d>& targets);
   void GlobalParWrite();
   void GlobalProblemWrite(Eigen::MatrixXd& costMat);

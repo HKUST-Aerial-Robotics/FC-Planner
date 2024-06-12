@@ -64,7 +64,8 @@ public:
   ~Astar();
   enum { REACH_END = 1, NO_PATH = 2 };
 
-  void init_hc(ros::NodeHandle& nh, const SDFMap::Ptr& hc_map_);
+  void init_hc(ros::NodeHandle& nh);
+  void setMap(const SDFMap::Ptr& hc_map_);
   void reset();
   int hc_search(const Eigen::Vector3d& start_pt, const Eigen::Vector3d& end_pt);
   void setResolution(const double& res);
