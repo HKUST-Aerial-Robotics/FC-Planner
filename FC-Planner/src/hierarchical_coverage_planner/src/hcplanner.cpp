@@ -608,17 +608,6 @@ namespace predrecon
                 vp_fov_normal.normal_z = -normal_dir(2);
 
                 seg_vps->points.push_back(vp_fov_normal);
-                PR.pt_vp_pairs[pt_vec] = vp_vec;
-                PR.vp_pt_pairs[vp_vec] = pt_vec;
-                p1(0) = pt_.x;
-                p1(1) = pt_.y;
-                p1(2) = pt_.z;
-                p2(0) = vp.x;
-                p2(1) = vp.y;
-                p2(2) = vp.z;
-                avg_dist += (p1 - p2).norm();
-                dist_count++;
-                PR.vp_seg_pairs[p2] = seg_id;
               }
               // for safety of viewpoints under ground constraint
               else
@@ -626,7 +615,7 @@ namespace predrecon
                 vp_vec(0) = vp.x;
                 vp_vec(1) = vp.y;
                 vp_vec(2) = GroundZPos + safeHeight;
-                pcl::PointXYZ tmp_vp = vp; // zmj
+                pcl::PointXYZ tmp_vp = vp;
                 tmp_vp.z = vp_vec(2);
                 basic_vps->points.push_back(tmp_vp);
                 vp_search_sub_[vp_vec] = sub_id;
@@ -644,17 +633,6 @@ namespace predrecon
                 vp_fov_normal.normal_z = z_new;
 
                 seg_vps->points.push_back(vp_fov_normal);
-                PR.pt_vp_pairs[pt_vec] = vp_vec;
-                PR.vp_pt_pairs[vp_vec] = pt_vec;
-                p1(0) = pt_.x;
-                p1(1) = pt_.y;
-                p1(2) = pt_.z;
-                p2(0) = vp_vec(0);
-                p2(1) = vp_vec(1);
-                p2(2) = vp_vec(2);
-                avg_dist += (p1 - p2).norm();
-                dist_count++;
-                PR.vp_seg_pairs[p2] = seg_id;
               }
             }
           }
@@ -674,17 +652,6 @@ namespace predrecon
             vp_fov_normal.normal_z = -normal_dir(2);
 
             seg_vps->points.push_back(vp_fov_normal);
-            PR.pt_vp_pairs[pt_vec] = vp_vec;
-            PR.vp_pt_pairs[vp_vec] = pt_vec;
-            p1(0) = pt_.x;
-            p1(1) = pt_.y;
-            p1(2) = pt_.z;
-            p2(0) = vp.x;
-            p2(1) = vp.y;
-            p2(2) = vp.z;
-            avg_dist += (p1 - p2).norm();
-            dist_count++;
-            PR.vp_seg_pairs[p2] = seg_id;
           }
         }
       }
@@ -714,8 +681,6 @@ namespace predrecon
           filter_dir_(0) = vp.normal_x;
           filter_dir_(1) = vp.normal_y;
           filter_dir_(2) = vp.normal_z;
-          // if (filter_dir_.norm() < 1e-3)
-          //   cout << "Error: vp normal direction is zero!" << endl;
           
           PR.vp_direction_pairs[filter_vp_] = filter_dir_;
           safe_vp.x = vp.x;

@@ -117,13 +117,10 @@ struct PathResult
   map<int, vector<bool>> cover_state; // [int: seg_id], coverage state of each voxel in each segment
   map<int, vector<double>> cover_contrib; // [int: seg_id], the contribution degree of covered viewpoints to this voxel in each segment
   map<int, vector<Eigen::Vector2i>> contrib_id; // [int: seg_id], the index of covered viewpoints to this voxel in each segment
-  map<Eigen::Vector3d, int, Vector3dCompare> vp_seg_pairs; // this viewpoints sampled from which segment
   map<Eigen::Vector3d, Eigen::Vector3d, Vector3dCompare0> pt_normal_pairs;
   vector<Eigen::VectorXd> outer_normals;
   map<Eigen::Vector3d, Eigen::Vector3d, Vector3dCompare> pt_proj_pairs;
   map<Eigen::Vector3d, int, Vector3dCompare> pt_sub_pairs;
-  map<Eigen::Vector3d, Eigen::Vector3d, Vector3dCompare> pt_vp_pairs;
-  map<Eigen::Vector3d, Eigen::Vector3d, Vector3dCompare> vp_pt_pairs;
   /* for uncovered viewpoints evaluation */
   map<Eigen::Vector3d, Eigen::Vector3d, Vector3dCompare> vp_direction_pairs;
   /* final viewpoints */
