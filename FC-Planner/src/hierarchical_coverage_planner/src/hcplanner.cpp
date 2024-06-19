@@ -545,8 +545,7 @@ namespace predrecon
     map<int, vector<int>> temp_sub_vps_voxcount, before_sub_vps_voxcount;
 
     /* normal-based inflate sampling */
-    int sub_id = 0, dist_count = 0, vp_count = 0, safe_vp_count = 0;
-    double avg_dist = 0.0;
+    int sub_id = 0, vp_count = 0, safe_vp_count = 0;
     Eigen::Vector3d p1, p2;
     vector<int> segments_id;
     Eigen::Vector3d pt_vec, normal_dir, vp_vec;

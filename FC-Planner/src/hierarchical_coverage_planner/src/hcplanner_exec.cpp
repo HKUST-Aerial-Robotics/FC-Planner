@@ -20,6 +20,7 @@
 #include <hierarchical_coverage_planner/hcplanner.h>
 #include <hierarchical_coverage_planner/hcopp.h>
 #include <hierarchical_coverage_planner/backward.hpp>
+#include <logger_info/logger.hpp>
 #include <ros/ros.h>
 
 namespace backward
@@ -33,6 +34,8 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "hcplanner_exec");
     ros::NodeHandle nh("~");
+
+    logger_info::deviceInfo();
 
     HCOPP planning;
     planning.init(nh);
