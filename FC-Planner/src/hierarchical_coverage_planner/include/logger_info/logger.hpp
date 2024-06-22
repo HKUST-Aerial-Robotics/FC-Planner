@@ -140,6 +140,13 @@ namespace logger_info
            std::to_string((PCL_VERSION / 100) % 1000) + "." + 
            std::to_string(PCL_VERSION % 100);
     }
+
+    inline std::string get_boost_version()
+    {
+        return std::to_string(BOOST_VERSION / 100000) + "." + 
+           std::to_string((BOOST_VERSION / 100) % 1000) + "." + 
+           std::to_string(BOOST_VERSION % 100);
+    }
     
     inline void deviceInfo()
     {
@@ -155,6 +162,7 @@ namespace logger_info
         std::cout << "GCC Version    : " << get_gcc_version() << std::endl;
         std::cout << "Eigen Version  : " << get_eigen_version() << std::endl;
         std::cout << "PCL Version    : " << get_pcl_version() << std::endl;
+        std::cout << "Boost Version  : " << get_boost_version() << std::endl;
         std::cout << "----------------------------------------------------------------" << std::endl;
         std::cout << std::endl;
     }

@@ -59,8 +59,9 @@ Please kindly star ⭐️ this project if it helps you. We take great efforts to
 
 **Prerequisite:**
 * ROS Noetic (Ubuntu 20.04) or ROS Melodic (Ubuntu 18.04)
-* PCL 1.7+
-* Eigen3.4+ (3.4.1 Recommended)
+* PCL 1.7+ (1.10.0 Recommended)
+* Eigen 3.4+ (3.4.1 Recommended)
+* Boost 1.71.0
 ```shell
   sudo apt update
   sudo apt install cpufrequtils
@@ -117,6 +118,23 @@ Afterwards, you will obtain the discrete trajectory in ```src/hierarchical_cover
 #### • Use in Your Application
 
 If you have successfully run the simulation and want to use FC-Planner in your project, please explore the launch files in ```src/hierarchical_coverage_planner/launch```. Important parameters that may be changed in your usage. Notably, FC-Planner accepts ***surface point cloud*** as input, so you may be careful about the type of your data.
+
+#### • Information of Your Device
+When you run the launch file, you will see detailed environment of your platform at the beginning of terminal outputs, *e.g.*,
+```
+------------------------YOUR DEVICE INFO------------------------
+Project        : FC-Planner
+Author         : Chen Feng
+Current Time   : Sat Jun 22 19:40:05 2024
+CPU Info       : 12th Gen Intel(R) Core(TM) i9-12900K
+RAM Info       : 31.14GB Physical Memory, 2.00GB Virtual Memory
+OS Info        : Linux 5.15.0-107-generic (x86_64)
+GCC Version    : 9.4.0
+Eigen Version  : 3.4.1
+PCL Version    : 1.10.0
+Boost Version  : 1.71.0
+----------------------------------------------------------------
+```
 
 ## 🔌 Plug-in Packages
 

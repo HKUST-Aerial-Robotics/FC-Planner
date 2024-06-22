@@ -47,6 +47,8 @@
 #include <mutex>
 #include <condition_variable>
 #include <iomanip>
+#include <boost/thread/mutex.hpp>
+#include <boost/thread/thread.hpp>
 
 using namespace std;
 using std::unique_ptr;

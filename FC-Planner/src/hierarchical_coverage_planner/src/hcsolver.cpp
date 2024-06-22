@@ -20,8 +20,8 @@
 
 #include <hierarchical_coverage_planner/hcsolver.h>
 
-mutex mtx;
-condition_variable con_var;
+boost::mutex mtx;
+boost::condition_variable con_var;
 const double MAX = 1e6;
 
 namespace predrecon
@@ -210,7 +210,8 @@ namespace predrecon
     /* Join all threads if they haven't already been joined */
     for (int i = 0; i < numThreads; i++)
     {
-      threads[i].join();
+      if (threads[i].joinable())
+        threads[i].join();
     }
     
     return make_tuple(local_sub_path_viewpts_, local_sub_path_waypts_);
@@ -1036,12 +1037,14 @@ namespace predrecon
     viewpointsFinal = path_viewpoints_;
     waypointsFinal = path_waypoints_;
 
-    local_sub_path_viewpts_[sub_id_] = viewpointsFinal;
-    local_sub_path_waypts_[sub_id_] = waypointsFinal;
+    {
+      boost::lock_guard<boost::mutex> lock(mtx);
+      local_sub_path_viewpts_[sub_id_] = path_viewpoints_;
+      local_sub_path_waypts_[sub_id_] = path_waypoints_;
+    }
     /* record results end */
     }
     
-    std::unique_lock<std::mutex> lock(mtx);
     con_var.notify_all();
   }  
   /* 
