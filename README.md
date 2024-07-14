@@ -61,7 +61,7 @@ Please kindly star ⭐️ this project if it helps you. We take great efforts to
 **Prerequisite:**
 * ROS Noetic (Ubuntu 20.04) or ROS Melodic (Ubuntu 18.04)
 * PCL 1.7+ (1.10.0 Recommended)
-* Eigen 3.4+ (3.4.1 Recommended)
+* Eigen 3.4+ ([3.4.1](https://hkustconnect-my.sharepoint.com/:u:/g/personal/cfengag_connect_ust_hk/ES7krJtO3E1Oh4wY0-Wcr-gBDZ3dWz9bpbFNKp6Yhpn3Yg?e=mfiKrO) Recommended)
 * Boost 1.71.0
 ```shell
   sudo apt update
