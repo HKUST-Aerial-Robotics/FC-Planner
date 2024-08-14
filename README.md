@@ -17,6 +17,7 @@
         </h5>
         <sup>†</sup>Corresponding Author
     </p>
+    <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10610621"> <img src="https://img.shields.io/badge/IEEE-ICRA-b31b1b"> </a>
     <a href='https://arxiv.org/pdf/2309.13882.pdf'><img src='https://img.shields.io/badge/arXiv-2309.13882-red' alt='arxiv'></a>
     <a href='https://hkust-aerial-robotics.github.io/FC-Planner/'><img src='https://img.shields.io/badge/Project_Page-FC_Planner-green' alt='Project Page'></a>
     <a href="https://www.youtube.com/watch?v=U-X4OddXI88"><img alt="YouTube" src="https://img.shields.io/badge/YouTube-Video-blue"/></a>
@@ -43,14 +44,16 @@
 **FC-Planner** is a highly efficient planning framework tailored for fast coverage of large and complex 3D scenes. Both the simulation and real-world experiments demonstrate the superior system simplicity and performance of our method compared to state-of-the-art ones.
 
 Please cite our paper if you use this project in your research:
-* [FC-Planner: A Skeleton-guided Planning Framework for Fast Aerial Coverage of Complex 3D Scenes](https://arxiv.org/pdf/2309.13882.pdf), Chen Feng, Haojia Li, Mingjie Zhang, Xinyi Chen, Boyu Zhou, and Shaojie Shen, 2024 IEEE International Conference on Robotics and Automation (ICRA).
+* [FC-Planner: A Skeleton-guided Planning Framework for Fast Aerial Coverage of Complex 3D Scenes](https://ieeexplore.ieee.org/document/10610621), Chen Feng, Haojia Li, Mingjie Zhang, Xinyi Chen, Boyu Zhou, and Shaojie Shen, 2024 IEEE International Conference on Robotics and Automation (ICRA).
 
 ```
-@article{feng2023fc,
-  title={FC-Planner: A Skeleton-guided Planning Framework for Fast Aerial Coverage of Complex 3D Scenes},
-  author={Feng, Chen and Li, Haojia and Jiang, Jinqi and Chen, Xinyi and Shen, Shaojie and Zhou, Boyu},
-  journal={arXiv preprint arXiv:2309.13882},
-  year={2023}
+@inproceedings{feng2024fc,
+  title={Fc-planner: A skeleton-guided planning framework for fast aerial coverage of complex 3d scenes},
+  author={Feng, Chen and Li, Haojia and Zhang, Mingjie and Chen, Xinyi and Zhou, Boyu and Shen, Shaojie},
+  booktitle={2024 IEEE International Conference on Robotics and Automation (ICRA)},
+  pages={8686--8692},
+  year={2024},
+  organization={IEEE}
 }
 ```
 
