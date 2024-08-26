@@ -277,6 +277,11 @@ namespace predrecon
 
   vector<Eigen::VectorXd> HCSolver::LocalRefine(vector<Eigen::Vector3d>& Joints, double& Range, vector<Eigen::VectorXd>& Path, bool turn)
   {
+    if ((int)Joints.size() == 0)
+    {
+      return Path;
+    }
+    
     vector<Eigen::VectorXd> RefinedPath, FinalPath;
     
     // ! Random Local 2-opt/3-opt

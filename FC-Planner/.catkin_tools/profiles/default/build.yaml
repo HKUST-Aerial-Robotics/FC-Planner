@@ -11,7 +11,8 @@ extends: null
 install: false
 install_space: install
 isolate_install: false
-jobs_args: []
+jobs_args:
+- -j4
 licenses:
 - TODO
 log_space: logs
