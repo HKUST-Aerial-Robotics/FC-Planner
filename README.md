@@ -26,10 +26,10 @@
 
 ## 📢 News
 
-* **[30/06/2024]**: FC-Hetero is accepted to IROS 2024 and selected as **oral presentation** (acceptance rate: 10%). 
+* **[30/06/2024]**: SOAR is accepted to IROS 2024 and selected as **oral presentation** (acceptance rate: 10%). 
 * **[16/05/2024]**: FC-Planner is selected as the **finalist** for ICRA 2024 **Best UAV Paper Award**.
 * **[02/05/2024]**: All code of FC-Planner is released.
-* **[15/03/2024]**: FC-Planner is extended to multi-UAV autonomous reconstruction as FC-Hetero, check this [repo](https://github.com/SYSU-STAR/FC-Hetero) for details.
+* **[15/03/2024]**: FC-Planner is extended to multi-UAV autonomous reconstruction as SOAR, check this [repo](https://github.com/SYSU-STAR/SOAR) for details.
 * **[29/01/2024]**: FC-Planner is accepted to ICRA 2024.
 
 ## 📜 Introduction
@@ -213,6 +213,12 @@ Since ICRA2024 is held in Pacifico, Yokohama, we specially prepared a demo recon
 
 ## 🤗 FC-family Works
 
+#### 1. What is FC-family?
+
+We aim to develop intelligent perception-centric flight to realize ***F***ast ***C***overage / re***C***onstruction / inspe***C***tion etc.
+
+#### 2. Projects list
+
 * [PredRecon](https://github.com/HKUST-Aerial-Robotics/PredRecon) (ICRA2023): Prediction-boosted Planner for Aerial Reconstruction.
 * [FC-Planner](https://github.com/HKUST-Aerial-Robotics/FC-Planner) (ICRA2024): Highly Efficient Global Planner for Aerial Coverage.
-* [FC-Hetero](https://github.com/SYSU-STAR/FC-Hetero) (IROS2024): Heterogenous Multi-UAV Planner for Aerial Reconstruction.
+* [SOAR](https://github.com/SYSU-STAR/SOAR) (IROS2024): Heterogenous Multi-UAV Planner for Aerial Reconstruction.
