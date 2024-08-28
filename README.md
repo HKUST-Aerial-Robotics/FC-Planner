@@ -5,9 +5,9 @@
     <br>
         <a href="https://chen-albert-feng.github.io/AlbertFeng.github.io/" target="_blank">Chen Feng</a><sup>2</sup>,
         <a href="https://uav.hkust.edu.hk/current-members/" target="_blank">Haojia Li</a><sup>2</sup>,
-        <a href="http://sysu-star.com/people/" target="_blank">Mingjie Zhang</a><sup>1</sup>,
+        <a href="http://sysu-star.com/people" target="_blank">Mingjie Zhang</a><sup>1</sup>,
         <a href="https://uav.hkust.edu.hk/current-members/" target="_blank">Xinyi Chen</a><sup>2</sup>,
-        <a href="http://sysu-star.com/people/" target="_blank">Boyu Zhou</a><sup>1,†</sup>, and
+        <a href="http://sysu-star.com/people" target="_blank">Boyu Zhou</a><sup>1,†</sup>, and
         <a href="https://uav.hkust.edu.hk/group/" target="_blank">Shaojie Shen</a><sup>2</sup>
     <p>
         <h45>
