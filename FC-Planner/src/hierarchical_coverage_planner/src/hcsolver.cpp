@@ -1839,16 +1839,14 @@ namespace predrecon
       /* avoid t3->t2->t1 since t4 will be t2*/
       t2 = t1->Pred;
       excludeID.push_back(t2->LocalID); 
-      if (t2->Pred->Start != true && t2->Pred->End != true)
-        excludeID.push_back(t2->Pred->LocalID);
+      excludeID.push_back(t2->Pred->LocalID);
     }
     else
     {
       /* avoid t1->t2->t3 since t4 will be t2*/
       t2 = t1->Suc;
       excludeID.push_back(t2->LocalID); 
-      if (t2->Suc->Start != true && t2->Suc->End != true)
-        excludeID.push_back(t2->Suc->LocalID);
+      excludeID.push_back(t2->Suc->LocalID);
     }
     Eigen::Vector3d posT1; posT1 << t1->X, t1->Y, t1->Z;
     Eigen::Vector3d posT2; posT2 << t2->X, t2->Y, t2->Z;
@@ -1926,16 +1924,14 @@ namespace predrecon
       /* avoid t3->t2->t1 since t4 will be t2*/
       t2 = t1->Pred;
       excludeID.push_back(t2->LocalID); 
-      if (t2->Pred->Start != true && t2->Pred->End != true)
-        excludeID.push_back(t2->Pred->LocalID);
+      excludeID.push_back(t2->Pred->LocalID);
     }
     else
     {
       /* avoid t1->t2->t3 since t4 will be t2*/
       t2 = t1->Suc;
       excludeID.push_back(t2->LocalID); 
-      if (t2->Suc->Start != true && t2->Suc->End != true)
-        excludeID.push_back(t2->Suc->LocalID);
+      excludeID.push_back(t2->Suc->LocalID);
     }
     Eigen::Vector3d posT1; posT1 << t1->X, t1->Y, t1->Z;
     Eigen::Vector3d posT2; posT2 << t2->X, t2->Y, t2->Z;
@@ -1984,20 +1980,14 @@ namespace predrecon
       vector<int> excludeID2;
       vector<Site*> remainSite2;
       excludeID2.push_back(t1->LocalID); 
-      if (t1->Pred->Start != true && t1->Pred->End != true)
-        excludeID2.push_back(t1->Pred->LocalID);
-      if (t1->Suc->Start != true && t1->Suc->End != true)
-        excludeID2.push_back(t1->Suc->LocalID);
+      excludeID2.push_back(t1->Pred->LocalID);
+      excludeID2.push_back(t1->Suc->LocalID);
       excludeID2.push_back(t2->LocalID); 
-      if (t2->Pred->Start != true && t2->Pred->End != true)
-        excludeID2.push_back(t2->Pred->LocalID);
-      if (t2->Suc->Start != true && t2->Suc->End != true)
-        excludeID2.push_back(t2->Suc->LocalID);
+      excludeID2.push_back(t2->Pred->LocalID);
+      excludeID2.push_back(t2->Suc->LocalID);
       excludeID2.push_back(t3->LocalID);
-      if (t3->Pred->Start != true && t3->Pred->End != true)
-        excludeID2.push_back(t3->Pred->LocalID);
-      if (t3->Suc->Start != true && t3->Suc->End != true)
-        excludeID2.push_back(t3->Suc->LocalID);
+      excludeID2.push_back(t3->Pred->LocalID);
+      excludeID2.push_back(t3->Suc->LocalID);
 
       Eigen::Vector3d posT3; posT3 << t3->X, t3->Y, t3->Z;
       Eigen::Vector3d posT4; posT4 << t3->Pred->X, t3->Pred->Y, t3->Pred->Z;
