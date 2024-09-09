@@ -347,6 +347,7 @@ namespace predrecon
     EndSite->GlobalID = gID;
     AllPathSite.push_back(EndSite);
 
+    AllPathSite.front()->Pred = nullptr;
     AllPathSite.front()->Suc = AllPathSite[1];
     for (int i=1; i<(int)AllPathSite.size()-1; ++i)
     {
@@ -354,6 +355,7 @@ namespace predrecon
       AllPathSite[i]->Suc = AllPathSite[i+1];
     }
     AllPathSite.back()->Pred = AllPathSite[(int)AllPathSite.size()-2];
+    AllPathSite.back()->Suc = nullptr;
     
     int count = 0;
     for (auto vp:LocalVps)
@@ -1836,17 +1838,25 @@ namespace predrecon
     double prob = disprob(genprob);
     if (prob > 0.5)
     {
+      if (t1->Start == true)
+        return;
+
       /* avoid t3->t2->t1 since t4 will be t2*/
       t2 = t1->Pred;
-      excludeID.push_back(t2->LocalID); 
-      excludeID.push_back(t2->Pred->LocalID);
+      excludeID.push_back(t2->GlobalID); 
+      if (t2->Start != true)
+        excludeID.push_back(t2->Pred->GlobalID);
     }
     else
     {
+      if (t1->End == true)
+        return;
+
       /* avoid t1->t2->t3 since t4 will be t2*/
       t2 = t1->Suc;
-      excludeID.push_back(t2->LocalID); 
-      excludeID.push_back(t2->Suc->LocalID);
+      excludeID.push_back(t2->GlobalID); 
+      if (t2->End != true)
+        excludeID.push_back(t2->Suc->GlobalID);
     }
     Eigen::Vector3d posT1; posT1 << t1->X, t1->Y, t1->Z;
     Eigen::Vector3d posT2; posT2 << t2->X, t2->Y, t2->Z;
@@ -1921,17 +1931,25 @@ namespace predrecon
     
     if (prob > 0.5)
     {
+      if (t1->Start == true)
+        return;
+      
       /* avoid t3->t2->t1 since t4 will be t2*/
       t2 = t1->Pred;
-      excludeID.push_back(t2->LocalID); 
-      excludeID.push_back(t2->Pred->LocalID);
+      excludeID.push_back(t2->GlobalID); 
+      if (t2->Start != true)
+        excludeID.push_back(t2->Pred->GlobalID);
     }
     else
     {
+      if (t1->End == true)
+        return;
+      
       /* avoid t1->t2->t3 since t4 will be t2*/
       t2 = t1->Suc;
-      excludeID.push_back(t2->LocalID); 
-      excludeID.push_back(t2->Suc->LocalID);
+      excludeID.push_back(t2->GlobalID); 
+      if (t2->End != true)
+        excludeID.push_back(t2->Suc->GlobalID);
     }
     Eigen::Vector3d posT1; posT1 << t1->X, t1->Y, t1->Z;
     Eigen::Vector3d posT2; posT2 << t2->X, t2->Y, t2->Z;
@@ -1979,15 +1997,21 @@ namespace predrecon
       /* choose t5 & t6 */
       vector<int> excludeID2;
       vector<Site*> remainSite2;
-      excludeID2.push_back(t1->LocalID); 
-      excludeID2.push_back(t1->Pred->LocalID);
-      excludeID2.push_back(t1->Suc->LocalID);
-      excludeID2.push_back(t2->LocalID); 
-      excludeID2.push_back(t2->Pred->LocalID);
-      excludeID2.push_back(t2->Suc->LocalID);
-      excludeID2.push_back(t3->LocalID);
-      excludeID2.push_back(t3->Pred->LocalID);
-      excludeID2.push_back(t3->Suc->LocalID);
+      excludeID2.push_back(t1->GlobalID); 
+      if (t1->Start != true)
+        excludeID2.push_back(t1->Pred->GlobalID);
+      if (t1->End != true)
+        excludeID2.push_back(t1->Suc->GlobalID);
+      excludeID2.push_back(t2->GlobalID); 
+      if (t2->Start != true)
+        excludeID2.push_back(t2->Pred->GlobalID);
+      if (t2->End != true)
+        excludeID2.push_back(t2->Suc->GlobalID);
+      excludeID2.push_back(t3->GlobalID);
+      if (t3->Start != true)
+        excludeID2.push_back(t3->Pred->GlobalID);
+      if (t3->End != true)
+        excludeID2.push_back(t3->Suc->GlobalID);
 
       Eigen::Vector3d posT3; posT3 << t3->X, t3->Y, t3->Z;
       Eigen::Vector3d posT4; posT4 << t3->Pred->X, t3->Pred->Y, t3->Pred->Z;
