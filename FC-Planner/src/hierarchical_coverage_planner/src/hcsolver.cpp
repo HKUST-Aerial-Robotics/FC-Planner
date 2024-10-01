@@ -375,18 +375,19 @@ namespace predrecon
     swapTimes = 0;
     for (int i=0; i<local2optNum; ++i)
     {
-      std::random_device rd;
-      std::mt19937 gen(rd());
-      std::uniform_real_distribution<> dis(0.0, 1.0);
-      double prob_local = dis(gen);
-      if (prob_local > 0.2)
-      {
-        RandomLocal2Opt(turn);
-      }
-      else
-      {
-        RandomLocal3Opt(turn);
-      }
+      // std::random_device rd;
+      // std::mt19937 gen(rd());
+      // std::uniform_real_distribution<> dis(0.0, 1.0);
+      // double prob_local = dis(gen);
+      // if (prob_local > 0.2)
+      // {
+      //   RandomLocal2Opt(turn);
+      // }
+      // else
+      // {
+      //   RandomLocal3Opt(turn);
+      // }
+      RandomLocal2Opt(turn);
     }
     ROS_INFO("\033[37m[LocalRefine] total local search attempts: %d, valid local search attempts: %d. \033[32m", local2optNum, swapTimes);
     // * Local 2-opt/3-opt END
