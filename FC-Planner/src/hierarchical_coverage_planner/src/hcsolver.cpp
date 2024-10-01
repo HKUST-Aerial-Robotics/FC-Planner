@@ -361,10 +361,7 @@ namespace predrecon
     for (auto vp:LocalVps)
     {
       int id = RefineID.find(vp)->second;
-      if (AllPathSite[id]->Start == true || AllPathSite[id]->End == true || AllPathSite[id]->Pred->Start == true || AllPathSite[id]->Suc->End == true || AllPathSite[id]->Pred->Pred->Start == true || AllPathSite[id]->Suc->Suc->End == true)
-      {
-        continue;
-      }
+
       AllPathSite[id]->LocalID = count;
       LocalSite.push_back(AllPathSite[id]);
       count++;
@@ -375,19 +372,18 @@ namespace predrecon
     swapTimes = 0;
     for (int i=0; i<local2optNum; ++i)
     {
-      // std::random_device rd;
-      // std::mt19937 gen(rd());
-      // std::uniform_real_distribution<> dis(0.0, 1.0);
-      // double prob_local = dis(gen);
-      // if (prob_local > 0.2)
-      // {
-      //   RandomLocal2Opt(turn);
-      // }
-      // else
-      // {
-      //   RandomLocal3Opt(turn);
-      // }
-      RandomLocal2Opt(turn);
+      std::random_device rd;
+      std::mt19937 gen(rd());
+      std::uniform_real_distribution<> dis(0.0, 1.0);
+      double prob_local = dis(gen);
+      if (prob_local > 0.2)
+      {
+        RandomLocal2Opt(turn);
+      }
+      else
+      {
+        RandomLocal3Opt(turn);
+      }
     }
     ROS_INFO("\033[37m[LocalRefine] total local search attempts: %d, valid local search attempts: %d. \033[32m", local2optNum, swapTimes);
     // * Local 2-opt/3-opt END
@@ -1191,39 +1187,30 @@ namespace predrecon
     bool seqF = true, endF = true;
     if (s2 == s1->Suc)
     {
-      /* A->B->s1->s2->C->D, E->F->s4->s3->G->H */
+      if (s3->Start == true)
+        return;
+
       s4 = s3->Pred;
       seqF = true;
-      A << s1->Pred->Pred->X, s1->Pred->Y, s1->Pred->Z;
-      B << s1->Pred->X, s1->Pred->Y, s1->Pred->Z;
-      C << s2->Suc->X, s2->Suc->Y, s2->Suc->Z;
-      D << s2->Suc->Suc->X, s2->Suc->Suc->Y, s2->Suc->Suc->Z;
-      E << s4->Pred->Pred->X, s4->Pred->Pred->Y, s4->Pred->Pred->Z;
-      F << s4->Pred->X, s4->Pred->Y, s4->Pred->Z;
-      G << s3->Suc->X, s3->Suc->Y, s3->Suc->Z;
-      H << s3->Suc->Suc->X, s3->Suc->Suc->Y, s3->Suc->Suc->Z;
     }
     if (s2 == s1->Pred)
     {
-      /* D->C->s2->s1->B->A, H->G->s3->s4->F->E */
+      if (s3->End == true)
+        return;
+
       s4 = s3->Suc;
       seqF = false;
-      A << s1->Suc->Suc->X, s1->Suc->Suc->Y, s1->Suc->Suc->Z;
-      B << s1->Suc->X, s1->Suc->Y, s1->Suc->Z;
-      C << s2->Pred->X, s2->Pred->Y, s2->Pred->Z;
-      D << s2->Pred->Pred->X, s2->Pred->Pred->Y, s2->Pred->Pred->Z;
-      E << s4->Suc->Suc->X, s4->Suc->Suc->Y, s4->Suc->Suc->Z;
-      F << s4->Suc->X, s4->Suc->Y, s4->Suc->Z;
-      G << s3->Pred->X, s3->Pred->Y, s3->Pred->Z;
-      H << s3->Pred->Pred->X, s3->Pred->Pred->Y, s3->Pred->Pred->Z;
     }
     // determine edge endpoints
     vector<Site*> swapSet = {s1, s2, s3, s4};
     Site *start = new Site; Site *end = new Site;
     start = AllPathSite.front();
     end = AllPathSite.back();
+
     int sflag = 0;
     Last = start;
+    if (s1 == start || s2 == start || s3 == start || s4 == start)
+      sflag++;
     while (sflag != 2)
     {
       Next = Last->Suc;
@@ -1239,6 +1226,8 @@ namespace predrecon
 
     sflag = 0;
     Last = end;
+    if (s1 == end || s2 == end || s3 == end || s4 == end)
+      sflag++;
     while (sflag != 2)
     {
       Next = Last->Pred;
@@ -1733,6 +1722,7 @@ namespace predrecon
           Last = Next;
         }
       }
+
       } 
     }
   }
@@ -1759,9 +1749,19 @@ namespace predrecon
         std::uniform_real_distribution<> disprob4(0.0, 1.0);
         double prob4 = disprob4(genprob4);
         if (prob4 > 0.5)
+        {
+          if (s1->Start == true)
+            return;
+
           s2 = s1->Pred;
+        }
         else
+        {
+          if (s1->End == true)
+            return;
+
           s2 = s1->Suc;
+        }
         if (s5 != s2->Pred && s5 != s2->Suc && s5 != s1->Pred && s5 != s1->Suc)
           Make2Opt(s1, s2, s5, s6, turn);
       }
@@ -1772,9 +1772,19 @@ namespace predrecon
         std::uniform_real_distribution<> disprob5(0.0, 1.0);
         double prob5 = disprob5(genprob5);
         if (prob5 > 0.5)
+        {
+          if (s3->Start == true)
+            return;
+
           s4 = s3->Pred;
+        }
         else
+        {
+          if (s3->End == true)
+            return;
+          
           s4 = s3->Suc;
+        }
         if (s5 != s4->Pred && s5 != s4->Suc && s5 != s3->Pred && s5 != s3->Suc)
           Make2Opt(s3, s4, s5, s6, turn);
       }
@@ -1794,9 +1804,19 @@ namespace predrecon
         std::uniform_real_distribution<> disprob7(0.0, 1.0);
         double prob7 = disprob7(genprob7);
         if (prob7 > 0.5)
+        {
+          if (s1->Start == true)
+            return;
+
           s2 = s1->Pred;
+        }
         else
+        {
+          if (s1->End == true)
+            return;
+
           s2 = s1->Suc;
+        }
         if (s3 != s2->Pred && s3 != s2->Suc && s3 != s1->Pred && s3 != s1->Suc)
           Make2Opt(s1, s2, s3, s4, turn);
       }
@@ -1807,9 +1827,19 @@ namespace predrecon
         std::uniform_real_distribution<> disprob8(0.0, 1.0);
         double prob8 = disprob8(genprob8);
         if (prob8 > 0.5)
+        {
+          if (s5->Start == true)
+            return;
+          
           s6 = s5->Pred;
+        }
         else
+        {
+          if (s5->End == true)
+            return;
+
           s6 = s5->Suc;
+        }
         if (s3 != s6->Pred && s3 != s6->Suc && s3 != s5->Pred && s3 != s5->Suc)
           Make2Opt(s5, s6, s3, s4, turn);
       }
@@ -1831,8 +1861,8 @@ namespace predrecon
     uniform_int_distribution<> dis(0, localNum - 1);
     int randomInt = dis(gen);
     t1 = LocalSite[randomInt];
-    excludeID.push_back(t1->LocalID);
-    
+    excludeID.push_back(t1->GlobalID);
+
     std::random_device rdprob;
     std::mt19937 genprob(rdprob());
     std::uniform_real_distribution<> disprob(0.0, 1.0);
@@ -1859,6 +1889,7 @@ namespace predrecon
       if (t2->End != true)
         excludeID.push_back(t2->Suc->GlobalID);
     }
+
     Eigen::Vector3d posT1; posT1 << t1->X, t1->Y, t1->Z;
     Eigen::Vector3d posT2; posT2 << t2->X, t2->Y, t2->Z;
     Eigen::Vector3d vecT1T2 = (posT2 - posT1).normalized();
@@ -1868,25 +1899,39 @@ namespace predrecon
       bool in = true;
       for (auto ex:excludeID)
       {
-        if (s->LocalID == ex)
+        if (s->GlobalID == ex)
         {
           in = false;
           break;
         }
       }
+
       Eigen::Vector3d posCandidate; posCandidate << s->X, s->Y, s->Z;
       if (in == true && (posCandidate-posT2).norm() < 20.0)
       {
-        Eigen::Vector3d posCandidatePred; posCandidatePred << s->Pred->X, s->Pred->Y, s->Pred->Z;
-        Eigen::Vector3d posCandidateSuc; posCandidateSuc << s->Suc->X, s->Suc->Y, s->Suc->Z;
-        Eigen::Vector3d vecCandidatePred = (posCandidate - posCandidatePred).normalized();
-        Eigen::Vector3d vecCandidateSuc = (posCandidateSuc - posCandidate).normalized();
+        Eigen::Vector3d posCandidatePred, posCandidateSuc;
+        Eigen::Vector3d vecCandidatePred, vecCandidateSuc;
+        double diffAnglePred, diffAngleSuc, diffSel;
 
-        double diffAnglePred = acos(vecT1T2.dot(vecCandidatePred));
-        diffAnglePred = min(diffAnglePred, 2 * M_PI - diffAnglePred);
-        double diffAngleSuc = acos(vecT1T2.dot(vecCandidateSuc));
-        diffAngleSuc = min(diffAngleSuc, 2 * M_PI - diffAngleSuc);
-        double diffSel = min(diffAnglePred, diffAngleSuc);
+        if (s->Start != true)
+        {
+          posCandidatePred << s->Pred->X, s->Pred->Y, s->Pred->Z;
+          vecCandidatePred = (posCandidate - posCandidatePred).normalized();
+          diffAnglePred = acos(vecT1T2.dot(vecCandidatePred));
+        }
+        else
+          diffAnglePred = M_PI;
+        
+        if (s->End != true)
+        {
+          posCandidateSuc << s->Suc->X, s->Suc->Y, s->Suc->Z;
+          vecCandidateSuc = (posCandidateSuc - posCandidate).normalized();
+          diffAngleSuc = acos(vecT1T2.dot(vecCandidateSuc));
+        }
+        else
+          diffAngleSuc = M_PI;
+        
+        diffSel = min(diffAnglePred, diffAngleSuc);
 
         if (diffSel > M_PI/36.0)
           remainSite.push_back(s);
@@ -1923,7 +1968,7 @@ namespace predrecon
     uniform_int_distribution<> dis(0, localNum - 1);
     int randomInt = dis(gen);
     t1 = LocalSite[randomInt];
-    excludeID.push_back(t1->LocalID);
+    excludeID.push_back(t1->GlobalID);
     
     std::random_device rdprob;
     std::mt19937 genprob(rdprob());
@@ -1958,10 +2003,13 @@ namespace predrecon
 
     for (auto s:LocalSite)
     {
+      if (s->Start == true)
+        continue;
+
       bool in = true;
       for (auto ex:excludeID)
       {
-        if (s->LocalID == ex)
+        if (s->GlobalID == ex)
         {
           in = false;
           break;
@@ -1970,16 +2018,29 @@ namespace predrecon
       Eigen::Vector3d posCandidate; posCandidate << s->X, s->Y, s->Z;
       if (in == true && (posCandidate-posT2).norm() < 20.0)
       {
-        Eigen::Vector3d posCandidatePred; posCandidatePred << s->Pred->X, s->Pred->Y, s->Pred->Z;
-        Eigen::Vector3d posCandidateSuc; posCandidateSuc << s->Suc->X, s->Suc->Y, s->Suc->Z;
-        Eigen::Vector3d vecCandidatePred = (posCandidate - posCandidatePred).normalized();
-        Eigen::Vector3d vecCandidateSuc = (posCandidateSuc - posCandidate).normalized();
+        Eigen::Vector3d posCandidatePred, posCandidateSuc;
+        Eigen::Vector3d vecCandidatePred, vecCandidateSuc;
+        double diffAnglePred, diffAngleSuc, diffSel;
 
-        double diffAnglePred = acos(vecT1T2.dot(vecCandidatePred));
-        diffAnglePred = min(diffAnglePred, 2 * M_PI - diffAnglePred);
-        double diffAngleSuc = acos(vecT1T2.dot(vecCandidateSuc));
-        diffAngleSuc = min(diffAngleSuc, 2 * M_PI - diffAngleSuc);
-        double diffSel = min(diffAnglePred, diffAngleSuc);
+        if (s->Start != true)
+        {
+          posCandidatePred << s->Pred->X, s->Pred->Y, s->Pred->Z;
+          vecCandidatePred = (posCandidate - posCandidatePred).normalized();
+          diffAnglePred = acos(vecT1T2.dot(vecCandidatePred));
+        }
+        else
+          diffAnglePred = M_PI;
+
+        if (s->End != true)
+        {
+          posCandidateSuc << s->Suc->X, s->Suc->Y, s->Suc->Z;
+          vecCandidateSuc = (posCandidateSuc - posCandidate).normalized();
+          diffAngleSuc = acos(vecT1T2.dot(vecCandidateSuc));
+        }
+        else
+          diffAngleSuc = M_PI;
+
+        diffSel = min(diffAnglePred, diffAngleSuc);
 
         if (diffSel > M_PI/36.0)
           remainSite.push_back(s);
@@ -2023,7 +2084,7 @@ namespace predrecon
         bool in = true;
         for (auto ex:excludeID2)
         {
-          if (s->LocalID == ex)
+          if (s->GlobalID == ex)
           {
             in = false;
             break;
@@ -2032,17 +2093,30 @@ namespace predrecon
         Eigen::Vector3d posCandidate; posCandidate << s->X, s->Y, s->Z;
         if (in == true && (posCandidate-posT3).norm() < 20.0)
         {
-          Eigen::Vector3d posCandidatePred; posCandidatePred << s->Pred->X, s->Pred->Y, s->Pred->Z;
-          Eigen::Vector3d posCandidateSuc; posCandidateSuc << s->Suc->X, s->Suc->Y, s->Suc->Z;
-          Eigen::Vector3d vecCandidatePred = (posCandidate - posCandidatePred).normalized();
-          Eigen::Vector3d vecCandidateSuc = (posCandidateSuc - posCandidate).normalized();
+          Eigen::Vector3d posCandidatePred, posCandidateSuc;
+          Eigen::Vector3d vecCandidatePred, vecCandidateSuc;
+          double diffAnglePred, diffAngleSuc, diffSel;
 
-          double diffAnglePred = acos(vecT3T4.dot(vecCandidatePred));
-          diffAnglePred = min(diffAnglePred, 2 * M_PI - diffAnglePred);
-          double diffAngleSuc = acos(vecT3T4.dot(vecCandidateSuc));
-          diffAngleSuc = min(diffAngleSuc, 2 * M_PI - diffAngleSuc);
-          double diffSel = min(diffAnglePred, diffAngleSuc);
+          if (s->Start != true)
+          {
+            posCandidatePred << s->Pred->X, s->Pred->Y, s->Pred->Z;
+            vecCandidatePred = (posCandidate - posCandidatePred).normalized();
+            diffAnglePred = acos(vecT3T4.dot(vecCandidatePred));
+          }
+          else
+            diffAnglePred = M_PI;
           
+          if (s->End != true)
+          {
+            posCandidateSuc << s->Suc->X, s->Suc->Y, s->Suc->Z;
+            vecCandidateSuc = (posCandidateSuc - posCandidate).normalized();
+            diffAngleSuc = acos(vecT3T4.dot(vecCandidateSuc));
+          }
+          else
+            diffAngleSuc = M_PI;
+          
+          diffSel = min(diffAnglePred, diffAngleSuc);
+
           if (diffSel > M_PI/36.0)
             remainSite2.push_back(s);
         }

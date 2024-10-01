@@ -1,14 +1,18 @@
-NAME : local_13.10002026.tour
-COMMENT : Length = 10002026
-COMMENT : Found by LKH [Keld Helsgaun] Thu May  9 18:21:07 2024
+NAME : local_13.4760.tour
+COMMENT : Length = 4760
+COMMENT : Found by LKH [Keld Helsgaun] Tue Oct  1 16:10:04 2024
 TYPE : TOUR
-DIMENSION : 6
+DIMENSION : 10
 TOUR_SECTION
 1
 2
+8
+6
 3
 4
+9
+7
 5
-6
+10
 -1
 EOF
