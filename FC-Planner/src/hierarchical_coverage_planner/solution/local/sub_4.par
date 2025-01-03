@@ -1,4 +1,4 @@
-PROBLEM_FILE = /home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/src/hierarchical_coverage_planner/solution/local/sub_4.tsp
+PROBLEM_FILE = /home/star/chen/FC-Planner/FC-Planner/src/hierarchical_coverage_planner/solution/local/sub_4.tsp
 GAIN23 = NO
-OUTPUT_TOUR_FILE =/home/eason/Chen/FC-Planner-os/FC-Planner/FC-Planner/src/hierarchical_coverage_planner/solution/local/sub_4_solution.txt
+OUTPUT_TOUR_FILE =/home/star/chen/FC-Planner/FC-Planner/src/hierarchical_coverage_planner/solution/local/sub_4_solution.txt
 RUNS = 1
