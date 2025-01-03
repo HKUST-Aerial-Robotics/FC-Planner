@@ -1,20 +1,18 @@
-NAME : global.23445.tour
-COMMENT : Length = 23445
-COMMENT : Found by LKH [Keld Helsgaun] Fri Jan  3 17:50:34 2025
+NAME : global.20753.tour
+COMMENT : Length = 20753
+COMMENT : Found by LKH [Keld Helsgaun] Fri Jan  3 18:02:15 2025
 TYPE : TOUR
-DIMENSION : 13
+DIMENSION : 11
 TOUR_SECTION
 1
 3
-2
 7
-6
 8
 9
 10
-12
 11
-13
+6
+2
 4
 5
 -1
