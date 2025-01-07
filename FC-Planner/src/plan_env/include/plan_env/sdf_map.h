@@ -375,24 +375,9 @@ inline bool SDFMap::isInMap_hc(const Eigen::Vector3i& idx) {
 inline bool SDFMap::safety_check(Eigen::Vector3i& id)
 {
   if (!isInMap_hc(id)) return false;
-  int ne_size = checkSize;
-  Eigen::Vector3i idxNe;
-  for (int i=-ne_size; i<ne_size+1; i=ne_size+1)
-  {
-    for (int j=-ne_size; j<ne_size+1; j=ne_size+1)
-    {
-      for (int k=-ne_size; k<ne_size+1; k=ne_size+1)
-      {
-        idxNe(0) = id(0) + i;
-        idxNe(1) = id(1) + j;
-        idxNe(2) = id(2) + k;
-        if (hcmd_->occupancy_buffer_hc_[toAddress_hc(idxNe)] == 1 || hcmd_->occupancy_buffer_internal_[toAddress_hc(idxNe)] == 1)
-          return false;
-      }
-    }
-  }
-  // if (hcmd_->occupancy_buffer_hc_[toAddress_hc(id)] == 1 || hcmd_->occupancy_buffer_internal_[toAddress_hc(id)] == 1)
-  //   return false;
+
+  if (hcmd_->occupancy_buffer_hc_[toAddress_hc(id)] == 1 || hcmd_->occupancy_buffer_internal_[toAddress_hc(id)] == 1)
+    return false;
   
   return true;
 }
