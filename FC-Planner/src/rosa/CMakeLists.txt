@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
     roscpp
     std_msgs
     quadrotor_msgs
+    cv_bridge
 )
 find_package(PCL REQUIRED)
 find_package(Eigen3 REQUIRED)
@@ -19,7 +20,7 @@ find_package(Eigen3 REQUIRED)
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES rosa
-  CATKIN_DEPENDS traj_utils
+  CATKIN_DEPENDS traj_utils cv_bridge
 )
 
 include_directories( 
