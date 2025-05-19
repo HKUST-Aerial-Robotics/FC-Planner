@@ -20,8 +20,6 @@
 
 #include <hierarchical_coverage_planner/hcsolver.h>
 
-boost::mutex mtx;
-boost::condition_variable con_var;
 const double MAX = 1e6;
 
 namespace predrecon
@@ -937,8 +935,12 @@ namespace predrecon
         waypointsSpec.push_back({});
         viewpointsSpec.push_back(vps[0]);
       }
-      local_sub_path_viewpts_[sub_id_] = viewpointsSpec;
-      local_sub_path_waypts_[sub_id_] = waypointsSpec;
+      {
+        std::unique_lock<std::mutex> lock(path_finder_mtx);
+        local_sub_path_viewpts_[sub_id_] = viewpointsSpec;
+        local_sub_path_waypts_[sub_id_] = waypointsSpec;
+        lock.unlock();
+      }
     }
     else
     {
@@ -1042,9 +1044,10 @@ namespace predrecon
     waypointsFinal = path_waypoints_;
 
     {
-      boost::lock_guard<boost::mutex> lock(mtx);
+      std::unique_lock<std::mutex> lock(path_finder_mtx);
       local_sub_path_viewpts_[sub_id_] = path_viewpoints_;
       local_sub_path_waypts_[sub_id_] = path_waypoints_;
+      lock.unlock();
     }
     /* record results end */
     }
