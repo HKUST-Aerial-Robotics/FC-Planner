@@ -104,6 +104,9 @@ public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
 private:
+  /* Multi-thread lock */
+  std::mutex path_finder_mtx;
+  std::condition_variable con_var;
   /* Param */
   int precision_, system_back_, local_system_back_;
   string GlobalSolver_;
