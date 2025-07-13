@@ -113,8 +113,8 @@ source devel/setup.zsh && roslaunch hierarchical_coverage_planner mbs.launch
 ```
 Trigger the quadrotor to start planning by the ``2D Nav Goal``, then ``2D Pose Estimate`` to start coverage flight as shown in the left gif. More scenes are provided in ```src/hierarchical_coverage_planner/launch```
 <p align="center">
-  <img src="misc/mbs.gif" width = 400 height = 240/>
-  <img src="misc/mbs_recon.gif" width = 400 height = 240/>
+  <img src="misc/mbs.gif" width = 400 />
+  <img src="misc/mbs_recon.gif" width = 400 />
 </p>
 
 Afterwards, you will obtain the discrete trajectory in ```src/hierarchical_coverage_planner/solution/Traj/TrajInfoMBS.txt```. You can use this coverage trajectory to capture the images of the target, and then reconstruct it. The detailed step can be found in [vis tool doc](./FC-Planner/vis_tool/README.md). The reconstruction result is depicted in the right gif.
@@ -158,7 +158,7 @@ source devel/setup.zsh && roslaunch rosa ${SCENE}.launch (e.g., redbird.launch)
 
 Afterwards, you will see the SSD results of HKUST RedBird in your ```Rviz``` as follows:
 <p align="center">
-  <img src="misc/redbird.png" width = 60% height = 60%/>
+  <img src="misc/redbird.png" width = 60% />
 </p>
 
 As for your ***customerized scene*** and ***more details***, you can find in [rosa package doc](FC-Planner/src/rosa/README.md). 
@@ -177,7 +177,7 @@ source devel/setup.zsh && roslaunch viewpoint_manager mbs.launch
 
 Afterwards, you will see the viewpoint generation results of Marina Bay Sands in your ```Rviz``` as follows:
 <p align="center">
-  <img src="misc/iterative_updates.png" width = 80% height = 60%/>
+  <img src="misc/iterative_updates.png" width = 80% />
 </p>
 
 You can also use other guidance to generate viewpoints, *e.g.*, normals. For example, we give a 2.5D case (indoor office) using normal guidance to generate viewpoints.
@@ -190,7 +190,7 @@ source devel/setup.zsh && roslaunch viewpoint_manager normal.launch
 
 Afterwards, you will see the viewpoint generation results of this 2.5D case in your ```Rviz``` as follows:
 <p align="center">
-  <img src="misc/2.5D_case.png" width = 80% height = 60%/>
+  <img src="misc/2.5D_case.png" width = 80% />
 </p>
 
 For more usage details, you can find in [viewpoint manager doc](./FC-Planner/src/viewpoint_manager/README.md). 
@@ -198,17 +198,17 @@ For more usage details, you can find in [viewpoint manager doc](./FC-Planner/src
 ## 🎮 Demo
 
 <p align="center">
-  <img src="misc/pipe.gif" width = 45% height = 45%/>
-  <img src="misc/mbs.gif" width = 45% height = 45%/>
-  <img src="misc/pacifico.gif" width = 45% height = 45%/>
-  <img src="misc/christ.gif" width = 45% height = 45%/>
+  <img src="misc/pipe.gif" width = 45% />
+  <img src="misc/mbs.gif" width = 45% />
+  <img src="misc/pacifico.gif" width = 45% />
+  <img src="misc/christ.gif" width = 45% />
 </p>
 <p align="center">
   <img src="misc/realworld.gif"/>
 </p>
 Since ICRA2024 is held in Pacifico, Yokohama, we specially prepared a demo reconstructing Pacifico center for the conference, as shown in below.
 <p align="center">
-  <img src="misc/pacifico_anmi.gif" width = 94% height = 94%/>
+  <img src="misc/pacifico_anmi.gif" width = 94% />
 </p>
 
 ## 🤗 FC-family Works
