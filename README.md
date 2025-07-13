@@ -37,8 +37,8 @@
 **[ICRA'24]** This repository maintains the implementation of "FC-Planner: A Skeleton-guided Planning Framework for Fast Aerial Coverage of Complex 3D Scenes".
 
 <p align="center">
-  <img src="misc/top_2024.png" width = 60% height = 60%/>
-  <img src="misc/fc-title.gif" width = 60% height = 60%/>
+  <img src="misc/top_2024.png" width = 60% />
+  <img src="misc/fc-title.gif" width = 60% />
 </p>
 
 **FC-Planner** is a highly efficient planning framework tailored for fast coverage of large and complex 3D scenes. Both the simulation and real-world experiments demonstrate the superior system simplicity and performance of our method compared to state-of-the-art ones.
