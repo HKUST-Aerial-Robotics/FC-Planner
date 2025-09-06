@@ -69,7 +69,7 @@ Please kindly star ⭐️ this project if it helps you. We take great efforts to
 ```shell
   sudo apt update
   sudo apt install cpufrequtils
-  sudo apt install libompl-dev
+  sudo apt install libompl-dev ros-noetic-ompl
 ```
 
 The project has been tested on Ubuntu 20.04 LTS (ROS Noetic) and Ubuntu 18.04 LTS (ROS Melodic). Directly clone our package (using ssh here):
