@@ -211,14 +211,15 @@ Since ICRA2024 is held in Pacifico, Yokohama, we specially prepared a demo recon
   <img src="misc/pacifico_anmi.gif" width = 94% />
 </p>
 
-## 🤗 FC-family Works
+## 🤗 FC-Family Works
 
-#### 1. What is FC-family?
+#### 1. What is [FC-Family](https://github.com/FC-Family)?
 
-We aim to develop intelligent perception-centric flight to realize ***F***ast ***C***overage / re***C***onstruction / inspe***C***tion etc.
+We aim to develop intelligent active perception flight to realize ***F***ast and reliable ***C***overage / s***C***anning / re***C***onstruction / inspe***C***tion etc.
 
 #### 2. Projects list
 
 * [PredRecon](https://github.com/HKUST-Aerial-Robotics/PredRecon) (ICRA2023): Prediction-boosted Planner for Aerial Reconstruction.
 * [FC-Planner](https://github.com/HKUST-Aerial-Robotics/FC-Planner) (ICRA2024): Highly Efficient Global Planner for Aerial Coverage.
 * [SOAR](https://github.com/SYSU-STAR/SOAR) (IROS2024): Heterogenous Multi-UAV Planner for Aerial Reconstruction.
+* [FlyCo](https://github.com/HKUST-Aerial-Robotics/FC-Planner): Complete and Prompt-Driven System for Open-World Aerial 3D Structure Scanning.
