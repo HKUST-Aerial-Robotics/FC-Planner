@@ -222,4 +222,5 @@ We aim to develop intelligent active perception flight to realize ***F***ast and
 * [PredRecon](https://github.com/HKUST-Aerial-Robotics/PredRecon) (ICRA2023): Prediction-boosted Planner for Aerial Reconstruction.
 * [FC-Planner](https://github.com/HKUST-Aerial-Robotics/FC-Planner) (ICRA2024): Highly Efficient Global Planner for Aerial Coverage.
 * [SOAR](https://github.com/SYSU-STAR/SOAR) (IROS2024): Heterogenous Multi-UAV Planner for Aerial Reconstruction.
+* [FC-Vision](https://github.com/FC-Family/FC-Vision) (RA-L2026): Online Visibility-aware Replanning for Occlusion-free Aerial Scanning.
 * [FlyCo](https://github.com/FC-Family/FlyCo): Complete and Prompt-Driven System for Open-World Aerial 3D Structure Scanning.
